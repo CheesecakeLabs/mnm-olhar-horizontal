@@ -26,6 +26,13 @@
 
         </activity>
 
+        <activity
+
+            android:name=".activities.BuscaActivity"
+            android:theme="@style/AppThemeNoBar">
+
+        </activity>
+
 
     </application>
 
