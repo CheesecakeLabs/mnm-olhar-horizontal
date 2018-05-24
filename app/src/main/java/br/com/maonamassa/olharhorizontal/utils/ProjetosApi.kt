@@ -1,6 +1,6 @@
 package br.com.maonamassa.olharhorizontal.utils
 
-import br.com.maonamassa.olharhorizontal.modelos.ONG
+import br.com.maonamassa.olharhorizontal.modelos.PaginaOng
 import io.reactivex.Observable
 import retrofit2.http.GET
 
@@ -11,5 +11,5 @@ import retrofit2.http.GET
 interface ProjetosApi {
 
     @GET("api/projects/")
-    fun getProjects(): Observable<List<ONG>>
+    fun getProjects(): Observable<PaginaOng>
 }
