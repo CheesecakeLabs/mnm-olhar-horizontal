@@ -29,8 +29,8 @@ class DetalhesActivity: AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         botaoOng.setOnClickListener{
-            val appUrl = Intent(Intent.ACTION_VIEW, Uri.parse(ong?.url))
-            startActivity(appUrl)
+//            val appUrl = Intent(Intent.ACTION_VIEW, Uri.parse(ong?.url))
+//            startActivity(appUrl)
         }
     }
 
@@ -40,12 +40,12 @@ class DetalhesActivity: AppCompatActivity() {
     }
 
     private fun setupView(){
-        nomeDetalhes.text = ong?.organizacao?.nome
+//        nomeDetalhes.text = ong?.organizacao?.nome
         title = ong?.nome
         dataDetalhes.text = SimpleDateFormat("dd/MM/yyyy").format(ong?.dataProjeto)
-        estadoDetalhes.text = ong?.estado
-        cidadeDetalhes.text = ong?.cidade
-        bairroDetalhes.text = ong?.bairro
+//        estadoDetalhes.text = ong?.estado
+//        cidadeDetalhes.text = ong?.cidade
+//        bairroDetalhes.text = ong?.bairro
         enderecoDetalhes.text = ong?.endereco
         descricaoDetalhes.text = ong?.descricao
         Picasso.with(this).load(ong?.fotoUrl).into(imagemDescricao)

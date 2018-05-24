@@ -8,7 +8,7 @@ import java.util.*
 
 
 @PaperParcel
-  class ONG() : PaperParcelable {
+  class ONG: PaperParcelable {
     companion object {
         @JvmField
         val CREATOR = PaperParcelONG.CREATOR
@@ -22,7 +22,7 @@ import java.util.*
     @Expose
     var nome: String? = null
 
-    @SerializedName("start_at")
+    @SerializedName("date")
     @Expose
     var dataProjeto: Date? = null
 
@@ -30,28 +30,8 @@ import java.util.*
     @Expose
     var descricao: String? = null
 
-    @SerializedName("state")
-    @Expose
-    var estado: String? = null
-
-    @SerializedName("city")
-    @Expose
-    var cidade: String? = null
-
-    @SerializedName("address_1")
+    @SerializedName("address")
     @Expose
     var endereco: String? = null
-
-    @SerializedName("address_2")
-    @Expose
-    var bairro: String? = null
-
-    @SerializedName("organization")
-    @Expose
-    var organizacao: Organizacao? = null
-
-    @SerializedName("")
-    @Expose
-    var url: String? = null
 
 }
