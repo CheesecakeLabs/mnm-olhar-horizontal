@@ -41,7 +41,7 @@ class OngViewHolder(itemView: View, var listener: OngClickListener): RecyclerVie
         ong ?: return
 
         itemView.nomeOng.text = ong.nome
-        itemView.dataOng.text = SimpleDateFormat("dd/MM/yyyy").format(ong.dataProjeto)
+//        itemView.dataOng.text = SimpleDateFormat("dd/MM/yyyy").format(ong.dataProjeto)
         itemView.descricaoOng.text = ong.descricao
 
         Picasso.with(itemView.context).load(ong.fotoUrl).into(itemView.ongImageView)
