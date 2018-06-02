@@ -1,33 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
-    <TextView
-        android:text="asd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_margin="0dp"
-        android:layout_marginBottom="0dp"
-        android:padding="0dp"
-        android:gravity=""
-        android:layout_gravity="center"
-        android:text="asd" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preencha os Dados"
+            android:inputType="textEmailAddress"
 
-
-    <Button
-        android:layout_width="108dp"
-        android:layout_height="68dp"
-        android:text="botão" />
+            />
 
 
 
 
+        <TextView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text="asd" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_margin="0dp"
+            android:layout_marginBottom="0dp"
+            android:gravity=""
+            android:padding="0dp"
+            android:text="asd" />
+
+
+        <Button
+            android:layout_width="108dp"
+            android:layout_height="68dp"
+            android:text="botão" />
+    </LinearLayout>
 
 </LinearLayout>
