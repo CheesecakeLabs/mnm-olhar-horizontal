@@ -11,7 +11,7 @@ import br.com.maonamassa.olharhorizontal.R
 class MapActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreateContextMenu(savedInstanceState)
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
     }
 }

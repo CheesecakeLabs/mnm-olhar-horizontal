@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         >
         <activity android:name=".activities.MapActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppThemeNoBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,55 +1,334 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activities.DetalhesActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true"
+        >
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary" />
+            android:layout_height="350dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleTextAppearance="@android:color/transparent"
+            android:fitsSystemWindows="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imagemDescricao"
+                    app:layout_collapseMode="parallax"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:background="@color/branco"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:background="@drawable/card_background"/>
+
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_collapseMode="pin"
+                app:collapseIcon="@drawable/ic_back_button"
+                />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Descrição da ONG vai ser um texto bem grande e ele vai pular de linha quando chegar no final por isso eu to enrolando e escrevendo qualquer coisa só pra ocupar mais ou menos umas cinco linhas da tela mas agora deu certo."
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:paddingTop="16dp"/>
-
-        <com.google.android.gms.maps.MapView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="24dp">
-
-        </com.google.android.gms.maps.MapView>
-
-
-
-        <Button
-            android:id="@+id/button"
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
             android:layout_marginBottom="16dp"
-            android:text="Site da ONG" />
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true"
+            >
 
-    </LinearLayout>
+            <!--<LinearLayout-->
+            <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
 
-</LinearLayout>
+            <!--<RelativeLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--&gt;-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/tituloONG"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Nome da ONG"-->
+            <!--android:textSize="15sp"-->
+            <!--android:layout_marginTop="26dp"-->
+            <!--android:layout_marginLeft="16dp"/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/nomeDetalhes"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Nome"-->
+            <!--android:textSize="16sp"-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="198dp"-->
+            <!--android:layout_below="@id/tituloONG"-->
+            <!--android:textStyle="bold"/>-->
+
+
+            <!--<TextView-->
+            <!--android:id="@+id/tituloData"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Data do Evento"-->
+            <!--android:textSize="15sp"-->
+            <!--android:layout_marginTop="26dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_marginLeft="190dp"-->
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/dataDetalhes"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Data"-->
+            <!--android:textSize="16sp"-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_below="@id/tituloData"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_marginLeft="190dp"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--/>-->
+
+            <!--<View-->
+            <!--android:id="@+id/linha1"-->
+            <!--android:background="@color/corDoApp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_below="@+id/nomeDetalhes"-->
+            <!--android:layout_marginTop="24dp"/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/tituloEndereco"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/linha1"-->
+            <!--android:text="Endereço"-->
+            <!--android:textSize="15sp"-->
+            <!--android:layout_marginTop="24dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/enderecoDetalhes"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/tituloEndereco"-->
+            <!--android:text="Endereço do Projeto"-->
+            <!--android:textSize="16sp"-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:textStyle="bold"-->
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/tituloBairro"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/enderecoDetalhes"-->
+            <!--android:text="Bairro"-->
+            <!--android:textSize="15sp"-->
+            <!--android:layout_marginTop="24dp"-->
+            <!--android:layout_marginRight="198dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/bairroDetalhes"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/tituloBairro"-->
+            <!--android:text="Bairro do projeto"-->
+            <!--android:textSize="16sp"-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:textStyle="bold"-->
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/tituloCidade"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/bairroDetalhes"-->
+            <!--android:text="Cidade"-->
+            <!--android:textSize="15sp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/cidadeDetalhes"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/tituloCidade"-->
+            <!--android:text="Cidade do Projeto"-->
+            <!--android:textSize="16sp"-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:textStyle="bold"-->
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/tituloEstado"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/cidadeDetalhes"-->
+            <!--android:text="Estado"-->
+            <!--android:textSize="15sp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/estadoDetalhes"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_below="@+id/tituloEstado"-->
+            <!--android:text="Estado do projeto"-->
+            <!--android:textSize="16sp"-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--/>-->
+
+            <!--<View-->
+            <!--android:id="@+id/linha2"-->
+            <!--android:background="@color/corDoApp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_below="@+id/estadoDetalhes"-->
+            <!--android:layout_marginTop="24dp"/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/tituloDescricao"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/linha2"-->
+            <!--android:text="Descrição"-->
+            <!--android:textSize="15sp"-->
+            <!--android:layout_marginTop="24dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/descricaoDetalhes"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/tituloDescricao"-->
+            <!--android:text="Descrição do Projeto"-->
+            <!--android:textSize="16sp"-->
+            <!--android:layout_marginTop="6dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:lineSpacingExtra="3dp"-->
+            <!--/>-->
+
+            <!--<Button-->
+            <!--android:id="@+id/botaoOng"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="10dp"-->
+            <!--android:textColor="#ffffff"-->
+            <!--android:background="@drawable/mybutton"-->
+            <!--android:text="Site da Organização"-->
+            <!--android:textSize="18sp"-->
+            <!--android:layout_below="@id/descricaoDetalhes"-->
+            <!--android:layout_marginTop="26dp"-->
+            <!--android:layout_marginRight="16dp"-->
+            <!--android:layout_marginLeft="16dp"-->
+            <!--android:layout_marginBottom="26dp"-->
+            <!--android:elevation="10dp"-->
+            <!--android:textAllCaps="false"/>-->
+
+            <!--</RelativeLayout>-->
+
+            <!--</LinearLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descrição da ONG vai ser um texto bem grande e ele vai pular de linha quando chegar no final por isso eu to enrolando e escrevendo qualquer coisa só pra ocupar mais ou menos umas cinco linhas da tela mas agora deu certo."
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:paddingTop="16dp"/>
+
+                <!--<com.google.android.gms.maps.MapView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="200dp"-->
+                    <!--android:layout_margin="24dp">-->
+
+                <!--</com.google.android.gms.maps.MapView>-->
+
+
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Site da ONG" />
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
