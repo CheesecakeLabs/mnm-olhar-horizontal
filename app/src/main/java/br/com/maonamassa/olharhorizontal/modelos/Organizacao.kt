@@ -18,7 +18,7 @@ class Organizacao()  : PaperParcelable {
         val CREATOR = PaperParcelOrganizacao.CREATOR
     }
 
-    @SerializedName("cnpj")
+    @SerializedName("document number")
     @Expose
     var cnpj: String? = null
 
@@ -26,6 +26,25 @@ class Organizacao()  : PaperParcelable {
     @Expose
     var nome: String? = null
 
+    @SerializedName("entity")
+    @Expose
+    var entidade: String? = null
+
+    @SerializedName("email")
+    @Expose
+    var email: String? = null
+
+    @SerializedName("picture")
+    @Expose
+    var fotoUrl: String? = null
+
+    @SerializedName("birth_date")
+    @Expose
+    var dataNasc: Date? = null
+
+    @SerializedName("location")
+    @Expose
+    var endereço: String? = null
 }
 
 

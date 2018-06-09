@@ -11,4 +11,5 @@
     <color name="branco">#FFFFFF</color>
     <color name="corDoApp">#009688</color>
     <color name="colorPrimaryText">#050505</color>
+    <color name="transparente">#00000000</color>
 </resources>

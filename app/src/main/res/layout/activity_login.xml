@@ -43,14 +43,20 @@
         android:orientation="vertical"
         >
 
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="35dp"
-             android:text="Esqueci minha senha"
-             android:layout_gravity="right"
-             android:gravity="center"
-             android:layout_marginBottom="5dp"
-             android:layout_marginTop="5dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Esqueci minha senha"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:layout_marginBottom="5dp"
+            android:background="@color/transparente"
+            android:layout_marginTop="5dp"
+            android:textSize="10dp"
+            android:textColor="@color/grey_font"
+            android:textAllCaps="false"
+            />
+
 
         <Button
             android:layout_width="match_parent"
@@ -59,7 +65,6 @@
             android:text="Entrar"
             android:layout_marginTop="10dp"
             android:textAllCaps="false"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_gravity="center"
@@ -75,11 +80,15 @@
             android:text="Cadastrar-se"
             android:textAllCaps="false"/>
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Entrar sem cadastro"
             android:layout_gravity="center"
+            android:background="@color/transparente"
+            android:textSize="10dp"
+            android:textColor="@color/grey_font"
+            android:textAllCaps="false"
             />
 
     </LinearLayout>
