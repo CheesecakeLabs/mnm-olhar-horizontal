@@ -43,7 +43,7 @@ class ListaActivity: AppCompatActivity(), OngClickListener {
     }
 
     override fun onOngClicked(ong: ONG) {
-        val proximaTela = Intent(this, DetalhesActivity::class.java)
+        val proximaTela = Intent(this, MapActivity::class.java)
         proximaTela.putExtra("ong", ong)
         startActivity(proximaTela)
     }

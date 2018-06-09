@@ -12,11 +12,7 @@
         >
         <activity android:name=".activities.MapActivity"
             android:theme="@style/AppThemeNoBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -30,7 +26,11 @@
 
             android:name=".activities.ListaActivity"
             android:theme="@style/AppThemeNoBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
 

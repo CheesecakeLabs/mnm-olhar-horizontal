@@ -299,6 +299,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/descricao_da_ong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Descrição da ONG vai ser um texto bem grande e ele vai pular de linha quando chegar no final por isso eu to enrolando e escrevendo qualquer coisa só pra ocupar mais ou menos umas cinco linhas da tela mas agora deu certo."
