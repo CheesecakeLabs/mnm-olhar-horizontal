@@ -34,4 +34,21 @@ import java.util.*
     @Expose
     var endereco: String? = null
 
+    @SerializedName("longitude")
+    @Expose
+    var longitude: String? = null
+
+    @SerializedName("latitude")
+    @Expose
+    var latitude: String? = null
+
+    @SerializedName("time")
+    @Expose
+    var horario: String? = null
+
+    @SerializedName("organization")
+    @Expose
+    var organizacao: Organizacao? = null
+
+
 }
