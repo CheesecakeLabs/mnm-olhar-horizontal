@@ -8,6 +8,7 @@
     <ImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:layout_marginTop="44dp"
         android:src="@mipmap/ic_launcher_round"
         android:layout_centerHorizontal="true"
         android:scaleType="centerCrop"
@@ -63,8 +64,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:text="Entrar"
+            android:textColor="@color/branco"
             android:layout_marginTop="10dp"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:background="@color/verde"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_gravity="center"
@@ -75,10 +79,14 @@
             />
 
         <Button
+            android:id="@+id/botaoCadastrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cadastrar-se"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:background="@color/azul"
+            android:textColor="@color/branco"
+            />
 
         <Button
             android:layout_width="wrap_content"

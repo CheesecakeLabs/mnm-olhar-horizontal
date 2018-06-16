@@ -12,4 +12,7 @@
     <color name="corDoApp">#009688</color>
     <color name="colorPrimaryText">#050505</color>
     <color name="transparente">#00000000</color>
+    <color name="verde">#129D90</color>
+    <color name="azul">#00146D</color>
+
 </resources>

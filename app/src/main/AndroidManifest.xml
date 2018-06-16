@@ -26,6 +26,15 @@
 
         </activity>
 
+
+        <activity
+
+            android:name=".activities.CadastroActivity"
+            android:theme="@style/AppTheme">
+
+        </activity>
+
+
         <activity
 
             android:name=".activities.ListaActivity"
