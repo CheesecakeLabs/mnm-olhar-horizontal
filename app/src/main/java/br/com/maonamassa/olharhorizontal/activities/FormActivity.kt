@@ -3,8 +3,10 @@ package br.com.maonamassa.olharhorizontal.activities
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.TextView
 import br.com.maonamassa.olharhorizontal.R
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog
 import kotlinx.android.synthetic.main.activity_form.*
 import java.util.*
 
@@ -30,8 +32,19 @@ class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             )
             dpd.setVersion(DatePickerDialog.Version.VERSION_1);
             dpd.show(fragmentManager, "Datepickerdialog")
+        }
 
+        textHour.setOnClickListener() {
+            val now = Calendar.getInstance()
+            val dpd = TimePickerDialog.newInstance(object: TimePickerDialog.OnTimeSetListener{
+                override fun onTimeSet(dialog: TimePickerDialog?, hora: Int, minuto: Int, segundo: Int) {
+                    var textH= "$hora:$minuto"
+                    textHour.setText(textH, TextView.BufferType.EDITABLE)
+                   //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
 
+            }, true )
+            dpd.show(fragmentManager, "Datepickerdialog")
         }
 
     }

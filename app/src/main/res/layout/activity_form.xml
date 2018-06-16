@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
 
-    <ImageView
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="100dp" />
 
@@ -43,14 +43,14 @@
             android:layout_marginTop="8dp">
 
             <EditText
+                android:id="@+id/dataInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:clickable="true"
+                android:ems="10"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:hint="Data"
-                android:id="@+id/dataInput"
                 android:inputType="none" />
         </android.support.design.widget.TextInputLayout>
 
@@ -64,6 +64,10 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Horário"
+                android:clickable="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:id="@+id/textHour"
                 android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
 
@@ -94,7 +98,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:layout_width="108dp"
+            android:layout_width="364dp"
             android:layout_height="68dp"
             android:text="botão" />
     </LinearLayout>
