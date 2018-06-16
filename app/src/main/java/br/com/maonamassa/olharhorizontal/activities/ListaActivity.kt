@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import br.com.maonamassa.olharhorizontal.R
 import br.com.maonamassa.olharhorizontal.modelos.ONG
 import br.com.maonamassa.olharhorizontal.utils.OngAdapter
@@ -23,6 +25,19 @@ class ListaActivity: AppCompatActivity(), OngClickListener {
         setupRecyclerView()
         getDataFromServer()
         title = "Olhar Horizontal"
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_busca, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == R.id.itemBusca) {
+            val intent = Intent(this, BuscaActivity::class.java)
+            startActivity(intent)
+        }
+        return true
     }
 
     fun setupRecyclerView() {
