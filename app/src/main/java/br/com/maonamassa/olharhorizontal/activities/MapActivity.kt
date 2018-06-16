@@ -8,12 +8,16 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import br.com.maonamassa.olharhorizontal.R
 import br.com.maonamassa.olharhorizontal.modelos.ONG
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_map.*
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
+    var map: GoogleMap? = null
 
     var ong: ONG? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +67,17 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     }
-    override fun onMapReady(p0: GoogleMap?) {
-     //   TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onMapReady(googleMap: GoogleMap?) {
+        map = googleMap
+
+        val florianopolis = LatLng(-27.5969, -48.5495)
+        map?.setMinZoomPreference(12f)
+        map?.moveCamera(CameraUpdateFactory.newLatLng(florianopolis))
+
+        val markerOptions = MarkerOptions()
+        markerOptions.position(florianopolis)
+        markerOptions.title("Florianópolis").snippet("Our City!")
+        map?.addMarker(markerOptions)
+
     }
 }
