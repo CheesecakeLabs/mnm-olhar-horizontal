@@ -70,7 +70,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap?) {
         map = googleMap
 
-        val florianopolis = LatLng(-27.5969, -48.5495)
+        val florianopolis = LatLng(ong?.latitude?.toDouble() ?: 25.00, ong?.longitude?.toDouble() ?: 32.00)
         map?.setMinZoomPreference(12f)
         map?.moveCamera(CameraUpdateFactory.newLatLng(florianopolis))
 
