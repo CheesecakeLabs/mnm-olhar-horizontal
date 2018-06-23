@@ -4,6 +4,12 @@ package br.com.maonamassa.olharhorizontal.activities
  * Created by Eduardo on 28/04/2018.
  */
 
+/**
+ * Modified by Tiago on 23/06/2018.
+ */
+
+import android.content.Intent
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import br.com.maonamassa.olharhorizontal.R
@@ -30,6 +36,11 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mapa.getMapAsync(this)
 
+        button.setOnClickListener {
+
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com"))
+            startActivity(i)
+        }
     }
 
     override fun onStart() {
