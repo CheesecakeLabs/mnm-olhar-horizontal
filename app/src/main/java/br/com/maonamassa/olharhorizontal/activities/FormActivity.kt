@@ -55,8 +55,8 @@ class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             val name= nameEditText.text.toString()
             ong.nome= name
 
-            val date=dataInput.text.toString()
-            ong.dataProjeto= date
+            //val date=dataInput.text.toString()
+            //ong.dataProjeto= date
 
             val descricption=descricaoEdit.text.toString()
             ong.descricao= descricption
@@ -67,8 +67,8 @@ class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             val address= enderecoEd.text.toString ()
             ong.endereco= address
 
-            val image= sendImage.text.toString ()
-            ong.fotoUrl= image
+            //val image= sendImage.text.toString ()
+            //ong.fotoUrl= image
 
             createProject(ong)
 

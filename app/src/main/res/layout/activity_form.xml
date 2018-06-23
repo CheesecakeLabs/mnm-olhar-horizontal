@@ -112,10 +112,10 @@
         </android.support.design.widget.TextInputLayout>
 
 
-        <com.google.android.gms.maps.MapView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"/>
+        <!--<com.google.android.gms.maps.MapView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:visibility="gone"/>-->
 
         <Button
             android:layout_width="364dp"
