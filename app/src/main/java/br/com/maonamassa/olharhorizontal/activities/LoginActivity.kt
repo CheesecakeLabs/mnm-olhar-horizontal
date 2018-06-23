@@ -13,7 +13,7 @@ class LoginActivity: AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         botaoCadastrar.setOnClickListener {
-            var intent = Intent(this, CadastroActivity::class.java)
+            val intent = Intent(this, CadastroActivity::class.java)
             startActivity(intent)
         }
     }

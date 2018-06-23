@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <RadioGroup
+        android:layout_marginTop="49dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:button="@null"
+            android:drawableBottom="?android:attr/listChoiceIndicatorSingle"
+            android:gravity="center_horizontal|bottom"
+            android:id="@+id/radioButton"
+            android:layout_marginStart="63dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Participante" />
+
+        <View
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:button="@null"
+            android:drawableBottom="?android:attr/listChoiceIndicatorSingle"
+            android:gravity="center_horizontal|bottom"
+            android:layout_marginEnd="63dp"
+            android:id="@+id/radioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ONG" />
+
+    </RadioGroup>
+
+</LinearLayout>
