@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,16 +10,18 @@
 
 
     <RadioGroup
+        android:id="@+id/radiogroup"
         android:layout_marginTop="49dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <RadioButton
+            android:checked="true"
             android:button="@null"
             android:drawableBottom="?android:attr/listChoiceIndicatorSingle"
             android:gravity="center_horizontal|bottom"
-            android:id="@+id/radioButton"
+            android:id="@+id/particebutton"
             android:layout_marginStart="63dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +37,7 @@
             android:drawableBottom="?android:attr/listChoiceIndicatorSingle"
             android:gravity="center_horizontal|bottom"
             android:layout_marginEnd="63dp"
-            android:id="@+id/radioButton2"
+            android:id="@+id/ONGbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ONG" />
@@ -50,15 +52,15 @@
        <EditText
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:hint="Email"
-           android:inputType="textEmailAddress" />
+           android:hint="Nome Completo"
+           android:inputType="textPersonName" />
 
    </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_marginStart="18dp"
         android:layout_marginEnd="18dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
@@ -72,44 +74,97 @@
     <android.support.design.widget.TextInputLayout
         android:layout_marginStart="18dp"
         android:layout_marginEnd="18dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="18dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        >
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:hint="Senha"
+            android:inputType="textPassword" />
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_marginStart="18dp"
         android:layout_marginEnd="18dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="18dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        >
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:hint="Repetir Senha"
+            android:inputType="textPassword" />
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_marginStart="18dp"
         android:layout_marginEnd="18dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="18dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/DatadeNascimentotextimput"
+        >
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="Data de Nascimento"
+            android:inputType="number" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/CNPJtextimput"
+        android:visibility="gone"
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CNPJ"
+            android:inputType="number" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Localizaçãotextimput"
+        android:visibility="gone"
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Localização"
             android:inputType="textEmailAddress" />
 
     </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
+        android:text="Concluir Cadastro"
+        android:textColor="@color/branco"
+        android:textAllCaps="false"
+        android:background="@color/verde"
+        />
 
 
 </LinearLayout>
