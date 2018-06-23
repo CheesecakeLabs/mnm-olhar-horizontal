@@ -76,7 +76,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val markerOptions = MarkerOptions()
         markerOptions.position(florianopolis)
-        markerOptions.title("Florianópolis").snippet("Our City!")
+        markerOptions.title("Florianópolis").snippet("Nossa cidade!")
         map?.addMarker(markerOptions)
 
     }
