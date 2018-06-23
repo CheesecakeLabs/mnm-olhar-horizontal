@@ -3,11 +3,18 @@ package br.com.maonamassa.olharhorizontal.activities
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.TextView
 import br.com.maonamassa.olharhorizontal.R
+import br.com.maonamassa.olharhorizontal.modelos.ONG
+import br.com.maonamassa.olharhorizontal.utils.OngAdapter
+import br.com.maonamassa.olharhorizontal.utils.ProjetosApi
+import br.com.maonamassa.olharhorizontal.utils.RetrofitHelper
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_form.*
+import kotlinx.android.synthetic.main.activity_lista.*
 import java.util.*
 
 /**
@@ -43,6 +50,27 @@ class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         }
 
         sendButton.setOnClickListener() {
+            var ong=ONG ()
+
+            val name= nameEditText.text.toString()
+            ong.nome= name
+
+            val date=dataInput.text.toString()
+            ong.dataProjeto= date
+
+            val descricption=descricaoEdit.text.toString()
+            ong.descricao= descricption
+
+            val time=textHour.text.toString()
+            ong.horario= time
+
+            val address= enderecoEd.text.toString ()
+            ong.endereco= address
+
+            val image= sendImage.text.toString ()
+            ong.fotoUrl= image
+
+            createProject(ong)
 
 
         }
@@ -65,5 +93,16 @@ class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
     override fun onDateSet(p0: DatePickerDialog?, year: Int, monthOfYear: Int, dayOfMonth: Int) {
         val date = "" + dayOfMonth + "/" + (monthOfYear + 1) + "/" + year
         dataInput.setText(date)
+    }
+
+    fun createProject(ong: ONG) {
+        val retrofit = RetrofitHelper.getRetrofit(useAuth = false)
+        val apiInterface = retrofit.create(ProjetosApi::class.java)
+        apiInterface?.createProject(ong)?.subscribeOn(Schedulers.io())?.subscribe({
+                    //
+                }, { error ->
+            Log.e("Erro", "Deu ruim na API")
+        }
+        )
     }
 }

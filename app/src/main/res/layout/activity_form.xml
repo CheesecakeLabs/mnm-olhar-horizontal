@@ -41,7 +41,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Nome"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:id="@+id/nameEditText"/>
         </android.support.design.widget.TextInputLayout>
 
 
@@ -92,7 +93,8 @@
                 android:ems="10"
                 android:hint="Descrição"
                 android:inputType="textMultiLine"
-                android:maxLength="300"/>
+                android:maxLength="300"
+                android:id="@+id/descricaoEdit"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -105,9 +107,15 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Endereço"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:id="@+id/enderecoEd"/>
         </android.support.design.widget.TextInputLayout>
 
+
+        <com.google.android.gms.maps.MapView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
         <Button
             android:layout_width="364dp"
