@@ -21,6 +21,8 @@ class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         setupView()
     }
 
+
+
     fun setupView () {
         dataInput.setOnClickListener {
             val now = Calendar.getInstance()
@@ -29,9 +31,20 @@ class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                     now.get(Calendar.YEAR),
                     now.get(Calendar.MONTH),
                     now.get(Calendar.DAY_OF_MONTH)
+
             )
             dpd.setVersion(DatePickerDialog.Version.VERSION_1);
             dpd.show(fragmentManager, "Datepickerdialog")
+        }
+
+        sendImage.setOnClickListener () {
+            //Implementar funcionalidade
+
+        }
+
+        sendButton.setOnClickListener() {
+
+
         }
 
         textHour.setOnClickListener() {
