@@ -12,6 +12,7 @@ import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import br.com.maonamassa.olharhorizontal.R
 import br.com.maonamassa.olharhorizontal.modelos.ONG
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -19,7 +20,9 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_map.*
+import kotlinx.android.synthetic.main.item_ong.view.*
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -77,6 +80,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         descricao_da_ong.text = ong?.descricao ?: "null"
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        Picasso.with(this).load(ong?.fotoUrl).into(imagemDescricao)
 
 
     }
