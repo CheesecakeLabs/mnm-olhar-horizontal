@@ -17,5 +17,5 @@ interface ProjetosApi {
     fun getProjects(): Observable<PaginaOng>
 
     @POST("api/projects/")
-    fun createProject(@Body project: ONG): Observable<PaginaOng>
+    fun createProject(@Body project: ONG): Observable<ONG>
 }

@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.TextView
 import br.com.maonamassa.olharhorizontal.R
 import br.com.maonamassa.olharhorizontal.modelos.ONG
+import br.com.maonamassa.olharhorizontal.modelos.Organizacao
 import br.com.maonamassa.olharhorizontal.utils.OngAdapter
 import br.com.maonamassa.olharhorizontal.utils.ProjetosApi
 import br.com.maonamassa.olharhorizontal.utils.RetrofitHelper
@@ -70,6 +71,24 @@ class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             //val image= sendImage.text.toString ()
             //ong.fotoUrl= image
 
+            val organizacao = Organizacao()
+            organizacao.cnpj = "oi"
+            organizacao.dataNasc = "2018-02-03"
+            organizacao.email = "io"
+            organizacao.endereco = "io"
+            organizacao.entidade = "oi"
+            organizacao.fotoUrl = "oi"
+            organizacao.nome = "io"
+            ong.organizacao = organizacao
+
+            ong.dataProjeto = "2018-02-03"
+
+            ong.latitude = "-27.59"
+
+            ong.longitude = "-48.95"
+
+
+
             createProject(ong)
 
 
@@ -99,7 +118,7 @@ class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         val retrofit = RetrofitHelper.getRetrofit(useAuth = false)
         val apiInterface = retrofit.create(ProjetosApi::class.java)
         apiInterface?.createProject(ong)?.subscribeOn(Schedulers.io())?.subscribe({
-                    //
+                    Log.e( "sucesso!!", "Objeto enviado com sucesso")
                 }, { error ->
             Log.e("Erro", "Deu ruim na API")
         }

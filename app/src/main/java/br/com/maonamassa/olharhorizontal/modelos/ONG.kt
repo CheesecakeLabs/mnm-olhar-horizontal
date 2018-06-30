@@ -24,7 +24,7 @@ import java.util.*
 
     @SerializedName("date")
     @Expose
-    var dataProjeto: Date? = null
+    var dataProjeto: String? = null
 
     @SerializedName("description")
     @Expose

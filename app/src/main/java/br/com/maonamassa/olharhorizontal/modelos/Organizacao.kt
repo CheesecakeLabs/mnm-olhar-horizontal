@@ -40,7 +40,7 @@ class Organizacao()  : PaperParcelable {
 
     @SerializedName("birth_date")
     @Expose
-    var dataNasc: Date? = null
+    var dataNasc: String? = null
 
     @SerializedName("locaton")
     @Expose
