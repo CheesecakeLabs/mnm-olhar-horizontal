@@ -82,7 +82,7 @@
                     android:id="@+id/descricao_da_ong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Descrição da ONG vai ser um texto bem grande e ele vai pular de linha quando chegar no final por isso eu to enrolando e escrevendo qualquer coisa só pra ocupar mais ou menos umas cinco linhas da tela mas agora deu certo."
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                     android:paddingStart="24dp"
                     android:paddingEnd="24dp"
                     android:paddingTop="16dp"/>

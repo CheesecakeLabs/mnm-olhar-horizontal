@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         >
         <activity android:name=".activities.MapActivity"
+            android:parentActivityName=".activities.ListaActivity"
             android:theme="@style/AppThemeNoBar">
 
         </activity>

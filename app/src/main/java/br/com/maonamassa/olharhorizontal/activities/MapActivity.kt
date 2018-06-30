@@ -75,6 +75,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun setupView() {
         descricao_da_ong.text = ong?.descricao ?: "null"
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
     }
