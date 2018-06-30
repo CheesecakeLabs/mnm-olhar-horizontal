@@ -23,17 +23,27 @@
         android:orientation="vertical"
         android:layout_marginTop="16dp">
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPersonName" />
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Senha"
-            android:inputType="textPassword" />
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Senha"
+                android:inputType="textPersonName" />
+
+        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
 
@@ -53,9 +63,10 @@
             android:layout_marginBottom="5dp"
             android:background="@color/transparente"
             android:layout_marginTop="5dp"
-            android:textSize="10dp"
+            android:textSize="14dp"
             android:textColor="@color/grey_font"
             android:textAllCaps="false"
+            android:layout_marginRight="3dp"
             />
 
 
@@ -67,7 +78,7 @@
             android:textColor="@color/branco"
             android:layout_marginTop="10dp"
             android:textAllCaps="false"
-            android:background="@color/verde"
+            android:backgroundTint="@color/verde"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -76,6 +87,7 @@
             android:text="ou"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
+            android:textSize="14dp"
             />
 
         <Button
@@ -84,7 +96,7 @@
             android:layout_height="wrap_content"
             android:text="Cadastrar-se"
             android:textAllCaps="false"
-            android:background="@color/azul"
+            android:backgroundTint="@color/azul"
             android:textColor="@color/branco"
             />
 
@@ -94,9 +106,10 @@
             android:text="Entrar sem cadastro"
             android:layout_gravity="center"
             android:background="@color/transparente"
-            android:textSize="10dp"
+            android:textSize="14dp"
             android:textColor="@color/grey_font"
             android:textAllCaps="false"
+            android:layout_marginTop="16dp"
             />
 
     </LinearLayout>

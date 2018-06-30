@@ -115,7 +115,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Data de Nascimento"
-            android:inputType="number" />
+            android:inputType="number"
+            />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -142,7 +143,7 @@
         android:layout_marginTop="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Localizaçãotextimput"
+        android:id="@+id/localizacaotextimput"
         android:visibility="gone"
         >
         <EditText
@@ -163,7 +164,7 @@
         android:text="Concluir Cadastro"
         android:textColor="@color/branco"
         android:textAllCaps="false"
-        android:background="@color/verde"
+        android:backgroundTint="@color/verde"
         />
 
 
