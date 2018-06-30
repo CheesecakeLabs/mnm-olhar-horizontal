@@ -21,7 +21,7 @@ class CadastroActivity : AppCompatActivity() {
 
                 participante = false
                 DatadeNascimentotextimput.visibility = View.GONE
-                CNPJtextimput.visibility = View.VISIBLE
+                CNPJtextinput.visibility = View.VISIBLE
                 localizacaotextimput.visibility = View.VISIBLE
             }
 
@@ -30,7 +30,7 @@ class CadastroActivity : AppCompatActivity() {
 
                 participante = true
                 DatadeNascimentotextimput.visibility = View.VISIBLE
-                CNPJtextimput.visibility = View.GONE
+                CNPJtextinput.visibility = View.GONE
                 localizacaotextimput.visibility = View.GONE
             }
         }
