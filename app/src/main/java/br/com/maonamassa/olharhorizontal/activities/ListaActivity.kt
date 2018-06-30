@@ -50,7 +50,7 @@ class ListaActivity: AppCompatActivity(), OngClickListener {
         apiInterface?.getProjects()?.subscribeOn(Schedulers.io())?.subscribe(
                 { page ->
                     runOnUiThread { page?.let { ongRecyclerView.adapter = OngAdapter(it.results, this) } }
-                }, { error ->
+                }, { _ ->
             Log.e("Erro", "Deu ruim na API")
         }
         )
