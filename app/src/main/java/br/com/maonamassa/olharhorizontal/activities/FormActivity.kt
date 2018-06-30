@@ -1,8 +1,10 @@
 package br.com.maonamassa.olharhorizontal.activities
 
+import android.Manifest
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.ImageButton
 import android.widget.TextView
 import br.com.maonamassa.olharhorizontal.R
 import br.com.maonamassa.olharhorizontal.modelos.ONG
@@ -19,7 +21,7 @@ import java.util.*
 /**
  * Created by Aluno on 28/04/2018.
  */
-class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
+class FormActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +31,23 @@ class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     fun setupView() {
 
-        val rxPermissions = RxPermissions(this)
+
+        sendImage.setOnClickListener {
+            Log.e("Camera", "comecando")
+            val rxPermissions = RxPermissions(this)
+            rxPermissions
+                    .request(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
+                    .subscribe { granted ->
+                        if (granted) {
+                            Log.e("Camera", "deu certo")
+                        } else {
+                            Log.e("Camera", "Deu errado")
+                        }
+
+                    }
+        }
+
+
 
         dataInput.setOnClickListener {
             val now = Calendar.getInstance()
@@ -44,10 +62,6 @@ class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             dpd.show(fragmentManager, "Datepickerdialog")
         }
 
-        sendImage.setOnClickListener() {
-            //Implementar funcionalidade
-
-        }
 
         sendButton.setOnClickListener() {
             var ong = ONG()
@@ -61,31 +75,30 @@ class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             val descricption = descricaoEdit.text.toString()
             ong.descricao = descricption
 
-            val time = textHour.text.toString()
-            ong.horario = time
+//            val time = textHour.text.toString()
+//            ong.horario = time
 
-            val address = enderecoEd.text.toString()
-            ong.endereco = address
+//            val address = enderecoEd.text.toString()
+//            ong.endereco = address
 
             //val image= sendImage.text.toString ()
             //ong.fotoUrl= image
 
-            val organizacao = Organizacao()
-            organizacao.cnpj = "oi"
-            organizacao.dataNasc = "2018-02-03"
-            organizacao.email = "io"
-            organizacao.endereco = "io"
-            organizacao.entidade = "oi"
-            organizacao.fotoUrl = "oi"
-            organizacao.nome = "io"
-            ong.organizacao = organizacao
+//            val organizacao = Organizacao()
+//            organizacao.cnpj = "oi"
+//            organizacao.dataNasc = "2018-02-03"
+//            organizacao.email = "io"
+//            organizacao.endereco = "io"
+//            organizacao.entidade = "oi"
+//            organizacao.fotoUrl = "oi"
+//            organizacao.nome = "io"
+//            ong.organizacao = organizacao
 
-            ong.dataProjeto = "2018-02-03"
-
-            ong.latitude = "-27.59"
-
-            ong.longitude = "-48.95"
-
+//            ong.dataProjeto = "2018-02-03"
+//
+//            ong.latitude = "-27.59"
+//
+//            ong.longitude = "-48.95"
 
 
             createProject(ong)
@@ -94,7 +107,7 @@ class FormActivity: AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
         textHour.setOnClickListener() {
             val now = Calendar.getInstance()
-            val dpd = TimePickerDialog.newInstance(object: TimePickerDialog.OnTimeSetListener {
+            val dpd = TimePickerDialog.newInstance(object : TimePickerDialog.OnTimeSetListener {
                 override fun onTimeSet(dialog: TimePickerDialog?, hora: Int, minuto: Int, segundo: Int) {
                     var textH = "$hora:$minuto"
                     textHour.setText(textH, TextView.BufferType.EDITABLE)
