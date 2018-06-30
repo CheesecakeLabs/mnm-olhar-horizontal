@@ -53,7 +53,9 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:hint="Nome Completo"
-           android:inputType="textPersonName" />
+           android:inputType="textPersonName"
+           android:id="@+id/nomeCompleto"
+           />
 
    </android.support.design.widget.TextInputLayout>
 
@@ -67,7 +69,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:id="@+id/email"
+            />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -83,7 +87,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Senha"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:id="@+id/senha"
+            />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -99,7 +105,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Repetir Senha"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:id="@+id/repetirSenha"
+            />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -115,7 +123,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Data de Nascimento"
-            android:inputType="number"
+            android:inputType="date"
+            android:id="@+id/dataNascimento"
             />
 
     </android.support.design.widget.TextInputLayout>
@@ -126,14 +135,16 @@
         android:layout_marginTop="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/CNPJtextimput"
+        android:id="@+id/CNPJtextinput"
         android:visibility="gone"
         >
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="CNPJ"
-            android:inputType="number" />
+            android:inputType="number"
+            android:id="@+id/CNPJ"
+            />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -150,7 +161,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Localização"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:id="@+id/localizacao"
+            />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -165,6 +178,7 @@
         android:textColor="@color/branco"
         android:textAllCaps="false"
         android:backgroundTint="@color/verde"
+        android:id="@+id/botaoConcluir"
         />
 
 

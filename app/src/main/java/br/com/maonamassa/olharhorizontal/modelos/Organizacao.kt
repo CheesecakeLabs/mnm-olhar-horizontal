@@ -40,11 +40,19 @@ class Organizacao()  : PaperParcelable {
 
     @SerializedName("birth_date")
     @Expose
-    var dataNasc: Date? = null
+    var dataNasc: String? = null
 
     @SerializedName("location")
     @Expose
     var endereço: String? = null
+
+    @SerializedName("id")
+    @Expose
+    var id: Int? = null
+
+    @SerializedName("password")
+    @Expose
+    var senha: String? = null
 }
 
 

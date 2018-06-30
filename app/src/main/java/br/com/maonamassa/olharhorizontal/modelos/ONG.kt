@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import paperparcel.PaperParcel
 import paperparcel.PaperParcelable
-import java.util.*
 
 
 @PaperParcel
@@ -24,7 +23,7 @@ import java.util.*
 
     @SerializedName("date")
     @Expose
-    var dataProjeto: Date? = null
+    var dataProjeto: String? = null
 
     @SerializedName("description")
     @Expose
