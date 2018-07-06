@@ -10,8 +10,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="Olhar Horizontal"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        >
+        android:supportsRtl="true">
         <activity android:name=".activities.FormActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -22,17 +21,18 @@
         </activity>
 
         <activity
-
             android:name=".activities.DetalhesActivity"
             android:theme="@style/AppThemeNoBar">
-
         </activity>
 
         <activity
-
+            android:name=".activities.BuscaActivity"
+            android:theme="@style/AppThemeNoBar">
+        </activity>
+  
+        <activity
             android:name=".activities.ListaActivity"
             android:theme="@style/AppThemeNoBar">
-
         </activity>
 
 
