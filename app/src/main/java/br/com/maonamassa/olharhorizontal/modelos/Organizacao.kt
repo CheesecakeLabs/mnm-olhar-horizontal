@@ -28,20 +28,31 @@ class Organizacao()  : PaperParcelable {
 
     @SerializedName("entity")
     @Expose
-    var entity: String? = null
-
-    @SerializedName("birth_date")
-    @Expose
-    var birth_date: Date? = null
-
-    @SerializedName("picture")
-    @Expose
-    var picture : String? = null
+    var entidade: String? = null
 
     @SerializedName("email")
     @Expose
     var email: String? = null
 
+    @SerializedName("picture")
+    @Expose
+    var fotoUrl: String? = null
+
+    @SerializedName("birth_date")
+    @Expose
+    var dataNasc: String? = null
+
+    @SerializedName("location")
+    @Expose
+    var endereço: String? = null
+
+    @SerializedName("id")
+    @Expose
+    var id: Int? = null
+
+    @SerializedName("password")
+    @Expose
+    var senha: String? = null
 
 }
 

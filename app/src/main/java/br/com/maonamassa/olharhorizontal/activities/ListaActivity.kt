@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import br.com.maonamassa.olharhorizontal.R
 import br.com.maonamassa.olharhorizontal.modelos.ONG
 import br.com.maonamassa.olharhorizontal.utils.OngAdapter
@@ -25,6 +27,19 @@ class ListaActivity: AppCompatActivity(), OngClickListener {
         title = "Olhar Horizontal"
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_busca, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == R.id.itemBusca) {
+            val intent = Intent(this, BuscaActivity::class.java)
+            startActivity(intent)
+        }
+        return true
+    }
+
     fun setupRecyclerView() {
         ongRecyclerView.layoutManager = LinearLayoutManager(this)
     }
@@ -35,7 +50,7 @@ class ListaActivity: AppCompatActivity(), OngClickListener {
         apiInterface?.getProjects()?.subscribeOn(Schedulers.io())?.subscribe(
                 { page ->
                     runOnUiThread { page?.let { ongRecyclerView.adapter = OngAdapter(it.results, this) } }
-                }, { error ->
+                }, { _ ->
             Log.e("Erro", "Deu ruim na API")
         }
         )

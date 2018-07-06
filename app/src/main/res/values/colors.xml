@@ -2,13 +2,18 @@
 <resources>
     <color name="colorPrimary">#009688</color>
     <color name="colorPrimaryDark">#00796B</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#00146D</color>
     <color name="fundoDaCelula">#f2f4f7</color>
     <color name="fundoDaImagem">#b1cef9</color>
     <color name="light_font">#FBFBFB</color>
     <color name="grey_font">#ff9e9e9e</color>
     <color name="text_shadow">#7F000000</color>
     <color name="branco">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="corDoApp">#009688</color>
     <color name="colorPrimaryText">#050505</color>
+    <color name="transparente">#00000000</color>
+    <color name="verde">#129D90</color>
+    <color name="azul">#00146D</color>
+
 </resources>
