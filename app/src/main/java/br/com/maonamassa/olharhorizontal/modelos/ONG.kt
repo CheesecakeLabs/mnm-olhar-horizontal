@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import paperparcel.PaperParcel
 import paperparcel.PaperParcelable
-import java.util.*
 
 
 @PaperParcel
@@ -49,6 +48,5 @@ import java.util.*
     @SerializedName("organization")
     @Expose
     var organizacao: Organizacao? = null
-
 
 }

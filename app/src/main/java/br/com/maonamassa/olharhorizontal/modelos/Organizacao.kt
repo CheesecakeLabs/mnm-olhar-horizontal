@@ -42,10 +42,18 @@ class Organizacao()  : PaperParcelable {
     @Expose
     var dataNasc: String? = null
 
-    @SerializedName("locaton")
+    @SerializedName("location")
     @Expose
-    var endereco: String? = null
+    var endereço: String? = null
 
+    @SerializedName("id")
+    @Expose
+    var id: Int? = null
+
+    @SerializedName("password")
+    @Expose
+    var senha: String? = null
+  
 }
 
 
