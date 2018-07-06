@@ -53,7 +53,7 @@ class Organizacao()  : PaperParcelable {
     @SerializedName("password")
     @Expose
     var senha: String? = null
-  
+
 }
 
 

@@ -11,12 +11,13 @@
         android:label="Olhar Horizontal"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
+      
         <activity 
             android:name=".activities.LoginActivity"
             android:theme="@style/AppThemeNoBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+              
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -28,7 +29,7 @@
 
         <activity
             android:name=".activities.ListaActivity"
-            android:theme="@style/AppThemeNoBar">
+            android:theme="@style/AppTheme">
         </activity>
           
         <activity
@@ -47,10 +48,14 @@
         </activity>
 
         <activity
-            android:name=".activities.ListaActivity"
-            android:theme="@style/AppTheme">
+            android:name=".activities.MapActivity"
+            android:theme="@style/AppThemeNoBar">
         </activity>
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"
+            />
     </application>
 
 </manifest>
