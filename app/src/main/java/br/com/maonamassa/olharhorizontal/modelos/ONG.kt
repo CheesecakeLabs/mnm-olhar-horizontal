@@ -24,7 +24,7 @@ import java.util.*
 
     @SerializedName("date")
     @Expose
-    var dataProjeto: Date? = null
+    var dataProjeto: String? = null
 
     @SerializedName("description")
     @Expose
@@ -33,5 +33,22 @@ import java.util.*
     @SerializedName("address")
     @Expose
     var endereco: String? = null
+
+    @SerializedName("longitude")
+    @Expose
+    var longitude: String? = null
+
+    @SerializedName("latitude")
+    @Expose
+    var latitude: String? = null
+
+    @SerializedName("time")
+    @Expose
+    var horario: String? = null
+
+    @SerializedName("organization")
+    @Expose
+    var organizacao: Organizacao? = null
+
 
 }
