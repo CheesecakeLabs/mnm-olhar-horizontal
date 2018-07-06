@@ -30,6 +30,7 @@ ext {
 }
 
 dependencies {
+    compile 'com.wdullaer:materialdatetimepicker:3.6.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -50,6 +51,8 @@ dependencies {
     compile "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
     compile 'com.android.support:cardview-v7:26.1.0'
     compile 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'com.wdullaer:materialdatetimepicker:3.6.0'
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
 }
 repositories {
     mavenCentral()
