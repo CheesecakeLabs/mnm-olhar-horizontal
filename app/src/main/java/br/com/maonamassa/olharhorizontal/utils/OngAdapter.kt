@@ -21,14 +21,14 @@ class OngAdapter(var lista: List<ONG>, var listener: OngClickListener): Recycler
       return lista.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): OngViewHolder {
-       val view = LayoutInflater.from(parent?.context).inflate(R.layout.item_ong, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OngViewHolder {
+       val view = LayoutInflater.from(parent.context).inflate(R.layout.item_ong, parent, false)
         return OngViewHolder(view, listener)
     }
 
-    override fun onBindViewHolder(holder: OngViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: OngViewHolder, position: Int) {
         val ong = lista[position]
-        holder?.ong = ong
+        holder.ong = ong
     }
 
 }

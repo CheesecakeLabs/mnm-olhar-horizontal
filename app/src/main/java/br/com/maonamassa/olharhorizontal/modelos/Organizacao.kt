@@ -18,7 +18,7 @@ class Organizacao()  : PaperParcelable {
         val CREATOR = PaperParcelOrganizacao.CREATOR
     }
 
-    @SerializedName("document number")
+    @SerializedName("document_number")
     @Expose
     var cnpj: String? = null
 
@@ -53,6 +53,7 @@ class Organizacao()  : PaperParcelable {
     @SerializedName("password")
     @Expose
     var senha: String? = null
+  
 }
 
 
