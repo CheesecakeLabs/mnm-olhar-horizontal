@@ -19,21 +19,100 @@ import kotlinx.android.synthetic.main.activity_form.*
 import java.util.*
 import android.content.Intent
 import android.graphics.Bitmap
-
-
-
+import android.location.Geocoder
+import android.text.Editable
+import android.text.TextWatcher
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import io.reactivex.android.plugins.RxAndroidPlugins
+import kotlinx.android.synthetic.main.activity_form.mapa
 
 
 /**
  * Created by Aluno on 28/04/2018.
  */
-class FormActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
+class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.OnDateSetListener, TextWatcher {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form)
         setupView()
+        mapa.onCreate(savedInstanceState)
+
+        mapa.getMapAsync(this)
     }
+
+    var map: GoogleMap? = null
+
+    override fun afterTextChanged(s: Editable?) {
+
+    }
+
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+    }
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        val geoCoder= Geocoder(this, Locale.getDefault())
+        val adrresses = geoCoder.getFromLocationName(enderecoEd.text.toString(), 1)
+        if (adrresses.isEmpty()) {
+            return
+        }
+        val adrress = adrresses.first()
+        val lat = adrress.latitude
+        val lon = adrress.longitude
+        val coord=LatLng(lat, lon)
+        val marker= MarkerOptions().position(coord)
+        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(coord,15f))
+
+    }
+
+    override fun onMapReady(googleMap: GoogleMap?) {
+        map = googleMap
+
+//        val florianopolis = LatLng( 25.00, 32.00)
+//        map?.setMinZoomPreference(12f)
+//        map?.moveCamera(CameraUpdateFactory.newLatLng(florianopolis))
+//
+//        val markerOptions = MarkerOptions()
+//        markerOptions.position(florianopolis)
+//        markerOptions.title("Florianópolis").snippet("Nossa cidade!")
+//        map?.addMarker(markerOptions)
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mapa.onStart()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapa.onPause()
+    }
+    override fun onResume() {
+        super.onResume()
+        mapa.onResume()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mapa.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapa.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapa.onLowMemory()
+    }
+
 
     val CAMERA_PIC_REQUEST= 1
 
@@ -71,7 +150,7 @@ class FormActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                     }
         }
 
-
+        enderecoEd.addTextChangedListener(this)
 
         dataInput.setOnClickListener {
             val now = Calendar.getInstance()

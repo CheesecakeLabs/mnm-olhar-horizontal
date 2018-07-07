@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/tools"
     android:orientation="vertical">
 
 
@@ -112,11 +113,15 @@
                 android:id="@+id/enderecoEd"/>
         </android.support.design.widget.TextInputLayout>
 
-
-        <!--<com.google.android.gms.maps.MapView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:visibility="gone"/>-->
+      <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    map:uiScrollGestures = "true"
+                    map:uiZoomGestures = "true"
+                    map:uiZoomControls = "true"
+                    map:uiRotateGestures = "true"
+                    map:uiTiltGestures = "true"/>
 
         <Button
             android:layout_width="364dp"
