@@ -44,6 +44,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             val i = Intent(Intent.ACTION_VIEW, Uri.parse (ong?.organizacao?.url))
             startActivity(i)
         }
+
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
     }
 
     override fun onStart() {
@@ -77,7 +81,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     private fun setupView() {
-        descricao_da_ong.text = ong?.descricao ?: "null"
+        descricao_da_ong.text = ong?.descricao ?: "Descrição Teste"
+
+        texto_endereco.text = ong?.endereco ?: "Endereço teste"
+
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         Picasso.with(this).load(ong?.fotoUrl).into(imagemDescricao)
@@ -87,14 +94,13 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap?) {
         map = googleMap
 
-        val florianopolis = LatLng(ong?.latitude?.toDouble() ?: 25.00, ong?.longitude?.toDouble() ?: 32.00)
+        val florianopolis = LatLng(ong?.latitude?.toDouble() ?: -27.594, ong?.longitude?.toDouble() ?: -48.5421)
         map?.setMinZoomPreference(12f)
         map?.moveCamera(CameraUpdateFactory.newLatLng(florianopolis))
 
         val markerOptions = MarkerOptions()
         markerOptions.position(florianopolis)
-        markerOptions.title("Florianópolis").snippet("Nossa cidade!")
+        markerOptions.title(ong?.nome).snippet(ong?.endereco)
         map?.addMarker(markerOptions)
-
     }
 }
