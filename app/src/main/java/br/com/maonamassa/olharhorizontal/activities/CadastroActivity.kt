@@ -2,10 +2,16 @@ package br.com.maonamassa.olharhorizontal.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import br.com.maonamassa.olharhorizontal.R
+import br.com.maonamassa.olharhorizontal.modelos.Cadastro
 import br.com.maonamassa.olharhorizontal.modelos.Organizacao
+import br.com.maonamassa.olharhorizontal.utils.CadastroApi
+import br.com.maonamassa.olharhorizontal.utils.RetrofitHelper
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_cadastro.*
 
 /**
@@ -52,15 +58,32 @@ class CadastroActivity : AppCompatActivity() {
             return
         }
 
-        val usuario = Organizacao()
-
-
-        usuario.nome = nomeCompleto?.text.toString()
-        usuario.email = email?.text.toString()
+        val usuario = Cadastro()
         usuario.senha = senha?.text.toString()
-        usuario.dataNasc = dataNascimento?.text.toString()
+        usuario.email = email?.text.toString()
+
+        val retrofit = RetrofitHelper.getRetrofit(false)
+        val cadastroApi = retrofit.create(CadastroApi::class.java)
+        cadastroApi.cadastrar(usuario)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ respostaCadastro ->
+                    Log.d("teste", respostaCadastro.token)
+                }, { error ->
+                    Log.d("Erro", error.message )
+                })
+
+ /*       if (participante) {
+            usuario.entidade = "P"
+        }
+        else {
+            usuario.entidade = "O"
+        }
         usuario.cnpj = CNPJ?.text.toString()
-        usuario.endereço = localizacao?.text.toString()
+        usuario.nome = nomeCompleto?.text.toString()
+        usuario.dataNasc = dataNascimento?.text.toString()
+        usuario.endereço = localizacao?.text.toString()*/
+
 
 
 
