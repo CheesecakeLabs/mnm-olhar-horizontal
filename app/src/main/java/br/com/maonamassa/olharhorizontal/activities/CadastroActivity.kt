@@ -60,7 +60,7 @@ class CadastroActivity : AppCompatActivity() {
         usuario.senha = senha?.text.toString()
         usuario.dataNasc = dataNascimento?.text.toString()
         usuario.cnpj = CNPJ?.text.toString()
-        usuario.endereço = localizacao?.text.toString()
+        usuario.endereco = localizacao?.text.toString()
 
 
 

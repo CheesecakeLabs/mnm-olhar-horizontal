@@ -44,7 +44,7 @@ class Organizacao()  : PaperParcelable {
 
     @SerializedName("location")
     @Expose
-    var endereço: String? = null
+    var endereco: String? = null
 
     @SerializedName("id")
     @Expose

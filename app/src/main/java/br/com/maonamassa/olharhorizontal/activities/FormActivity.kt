@@ -17,6 +17,12 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_form.*
 import java.util.*
+import android.content.Intent
+import android.graphics.Bitmap
+
+
+
+
 
 /**
  * Created by Aluno on 28/04/2018.
@@ -29,6 +35,24 @@ class FormActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         setupView()
     }
 
+    val CAMERA_PIC_REQUEST= 1
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+        if (requestCode == CAMERA_PIC_REQUEST) {
+            val image = data.extras!!.get("data") as Bitmap
+            val imageview = findViewById<ImageButton>(R.id.sendImage) as ImageButton //sets imageview as the bitmap
+            imageview.setImageBitmap(image)
+        }
+    }
+
+    fun openCamera (){
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(intent, CAMERA_PIC_REQUEST)
+
+    }
+
     fun setupView() {
 
 
@@ -39,7 +63,7 @@ class FormActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
                     .request(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
                     .subscribe { granted ->
                         if (granted) {
-                            Log.e("Camera", "deu certo")
+                            openCamera()
                         } else {
                             Log.e("Camera", "Deu errado")
                         }
@@ -69,36 +93,36 @@ class FormActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             val name = nameEditText.text.toString()
             ong.nome = name
 
-            //val date=dataInput.text.toString()
-            //ong.dataProjeto= date
+            val date=dataInput.text.toString()
+            ong.dataProjeto= date
 
             val descricption = descricaoEdit.text.toString()
             ong.descricao = descricption
 
-//            val time = textHour.text.toString()
-//            ong.horario = time
+            val time = textHour.text.toString()
+            ong.horario = time
 
-//            val address = enderecoEd.text.toString()
-//            ong.endereco = address
+            val address = enderecoEd.text.toString()
+            ong.endereco = address
 
             //val image= sendImage.text.toString ()
             //ong.fotoUrl= image
 
-//            val organizacao = Organizacao()
-//            organizacao.cnpj = "oi"
-//            organizacao.dataNasc = "2018-02-03"
-//            organizacao.email = "io"
-//            organizacao.endereco = "io"
-//            organizacao.entidade = "oi"
-//            organizacao.fotoUrl = "oi"
-//            organizacao.nome = "io"
-//            ong.organizacao = organizacao
+            val organizacao = Organizacao()
+            organizacao.cnpj = "oi"
+            organizacao.dataNasc = "2018-02-03"
+            organizacao.email = "io"
+            organizacao.endereco = "io"
+            organizacao.entidade = "oi"
+            organizacao.fotoUrl = "oi"
+            organizacao.nome = "io"
+            ong.organizacao = organizacao
 
-//            ong.dataProjeto = "2018-02-03"
-//
-//            ong.latitude = "-27.59"
-//
-//            ong.longitude = "-48.95"
+            ong.dataProjeto = "2018-02-03"
+
+            ong.latitude = "-27.59"
+
+            ong.longitude = "-48.95"
 
 
             createProject(ong)
