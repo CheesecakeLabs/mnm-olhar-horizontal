@@ -4,6 +4,7 @@ import android.util.Log
 import br.com.maonamassa.olharhorizontal.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.HttpException
@@ -61,9 +62,23 @@ object RetrofitHelper {
     private fun buildOkHttpClient(useAuth: Boolean): OkHttpClient {
         usingAuth = useAuth
         var builder = OkHttpClient.Builder()
+        if (useAuth) builder = addTokenInterceptor(builder)
         builder = addLoggingInterceptor(builder)
 
         return builder.build()
+    }
+
+    private fun addTokenInterceptor(builder: OkHttpClient.Builder): OkHttpClient.Builder {
+        val tokenInterceptor = Interceptor { chain ->
+            var newResquest = chain.request()
+            val accessToken = SessionHelper.recuperarToken()
+             if (accessToken?.isNotBlank() == true) {
+                 newResquest = newResquest.newBuilder().addHeader("Authorization", "Token $accessToken").build()
+             }
+            chain.proceed(newResquest)
+        }
+        builder.addNetworkInterceptor(tokenInterceptor)
+        return builder
     }
 
     private fun addLoggingInterceptor(builder: OkHttpClient.Builder): OkHttpClient.Builder {

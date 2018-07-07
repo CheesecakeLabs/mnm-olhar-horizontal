@@ -8,8 +8,10 @@ import android.view.View
 import br.com.maonamassa.olharhorizontal.R
 import br.com.maonamassa.olharhorizontal.modelos.Cadastro
 import br.com.maonamassa.olharhorizontal.modelos.Organizacao
+import br.com.maonamassa.olharhorizontal.modelos.RespostaCadastro
 import br.com.maonamassa.olharhorizontal.utils.CadastroApi
 import br.com.maonamassa.olharhorizontal.utils.RetrofitHelper
+import br.com.maonamassa.olharhorizontal.utils.SessionHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_cadastro.*
@@ -21,6 +23,7 @@ class CadastroActivity : AppCompatActivity() {
     var participante = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        SessionHelper.setup(this)
         setContentView(R.layout.activity_cadastro)
         radiogroup.setOnCheckedChangeListener { group, checkedId ->
             if (checkedId == R.id.ONGbutton) {
@@ -68,27 +71,55 @@ class CadastroActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ respostaCadastro ->
+                    processarResposta(respostaCadastro)
                     Log.d("teste", respostaCadastro.token)
                 }, { error ->
                     Log.d("Erro", error.message )
                 })
 
- /*       if (participante) {
-            usuario.entidade = "P"
+    }
+
+    private fun processarResposta (respostaCadastro: RespostaCadastro) {
+        // REVER ISTO AQUI
+        salvarToken(respostaCadastro.token ?: return)
+        atualizarUsuario(respostaCadastro.organizacao?.id ?: return)
+    }
+
+    private fun atualizarUsuario (id: Int) {
+
+        val organizacao = Organizacao()
+        if (participante) {
+            organizacao.entidade = "P"
         }
         else {
-            usuario.entidade = "O"
+            organizacao.entidade = "O"
         }
-        usuario.cnpj = CNPJ?.text.toString()
-        usuario.nome = nomeCompleto?.text.toString()
-        usuario.dataNasc = dataNascimento?.text.toString()
-        usuario.endereço = localizacao?.text.toString()*/
-
-
-
+        organizacao.cnpj = CNPJ?.text.toString()
+        organizacao.nome = nomeCompleto?.text.toString()
+        organizacao.dataNasc = dataNascimento?.text.toString()
+        organizacao.endereço = localizacao?.text.toString()
+        organizacao.id = id
+        val retrofit = RetrofitHelper.getRetrofit(true)
+        val cadastroApi = retrofit.create(CadastroApi::class.java)
+        cadastroApi.atualizarCadastro(id, organizacao)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ organizacao ->
+                    Log.d("teste", organizacao.email)
+                }, { error ->
+                    Log.d("Erro", error.message )
+                })
 
 
     }
+
+    private fun salvarToken (token: String) {
+
+        SessionHelper.salvarToken(token)
+
+    }
+
+
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
