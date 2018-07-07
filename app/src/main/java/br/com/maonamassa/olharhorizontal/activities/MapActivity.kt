@@ -41,7 +41,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         button.setOnClickListener {
 
-            val i = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com"))
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse (ong?.organizacao?.url))
             startActivity(i)
         }
     }

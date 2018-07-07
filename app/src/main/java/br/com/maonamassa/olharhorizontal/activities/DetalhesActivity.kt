@@ -29,8 +29,8 @@ class DetalhesActivity: AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         botaoOng.setOnClickListener{
-//            val appUrl = Intent(Intent.ACTION_VIEW, Uri.parse(ong?.url))
-//            startActivity(appUrl)
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse(ong?.organizacao?.url))
+            startActivity(i)
         }
     }
 
