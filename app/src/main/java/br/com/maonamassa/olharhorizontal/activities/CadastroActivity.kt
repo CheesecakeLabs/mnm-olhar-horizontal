@@ -9,12 +9,11 @@ import br.com.maonamassa.olharhorizontal.R
 import br.com.maonamassa.olharhorizontal.modelos.Cadastro
 import br.com.maonamassa.olharhorizontal.modelos.Organizacao
 import br.com.maonamassa.olharhorizontal.modelos.RespostaCadastro
-import br.com.maonamassa.olharhorizontal.utils.CadastroApi
-import br.com.maonamassa.olharhorizontal.utils.RetrofitHelper
-import br.com.maonamassa.olharhorizontal.utils.SessionHelper
+import br.com.maonamassa.olharhorizontal.utils.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_cadastro.*
+import java.text.SimpleDateFormat
 
 /**
  * Created by Aluno on 16/06/2018.
@@ -52,7 +51,7 @@ class CadastroActivity : AppCompatActivity() {
 
             concluirBotao()
         }
-
+        DateInputMask(dataNascimento).listen()
     }
 
     private fun concluirBotao() {
@@ -96,7 +95,7 @@ class CadastroActivity : AppCompatActivity() {
         }
         organizacao.cnpj = CNPJ?.text.toString()
         organizacao.nome = nomeCompleto?.text.toString()
-        organizacao.dataNasc = dataNascimento?.text.toString()
+        organizacao.dataNasc =  convertDateToBackendFormat(dataNascimento?.text.toString())
         organizacao.endereço = localizacao?.text.toString()
         organizacao.id = id
         val retrofit = RetrofitHelper.getRetrofit(true)
@@ -129,4 +128,10 @@ class CadastroActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun convertDateToBackendFormat(date: String): String{
+        val inputFormat = SimpleDateFormat("dd/mm/yyyy")
+        val outputFormat = SimpleDateFormat("yyyy-mm-dd")
+        val date = inputFormat.parse(date)
+        return outputFormat.format(date)
+    }
 }
