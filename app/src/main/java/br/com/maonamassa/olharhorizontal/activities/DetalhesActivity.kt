@@ -7,9 +7,8 @@ import android.support.design.R.styleable.Toolbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
-import android.widget.Button
+import android.view.View.GONE
 import br.com.maonamassa.olharhorizontal.R
-import br.com.maonamassa.olharhorizontal.R.id.*
 import br.com.maonamassa.olharhorizontal.modelos.ONG
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -18,11 +17,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detalhes.*
-import kotlinx.android.synthetic.main.activity_map.*
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 class DetalhesActivity: AppCompatActivity(), OnMapReadyCallback {
 
@@ -94,11 +89,13 @@ class DetalhesActivity: AppCompatActivity(), OnMapReadyCallback {
         val date = SimpleDateFormat("yyyy-MM-dd").parse(ong?.dataProjeto)
         dataDetalhes.text = SimpleDateFormat("dd/MM/yyyy").format(date).toString()
 
-
-
         enderecoDetalhes.text = ong?.endereco
         descricaoDetalhes.text = ong?.descricao
         Picasso.with(this).load(ong?.fotoUrl).into(imagemDescricao)
+
+        if (ong?.organizacao?.url == null) {
+            botaoOng.visibility = GONE
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
@@ -113,6 +110,5 @@ class DetalhesActivity: AppCompatActivity(), OnMapReadyCallback {
         markerOptions.title(ong?.nome).snippet(ong?.endereco)
         map?.addMarker(markerOptions)
     }
-
 
 }
