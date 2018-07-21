@@ -42,7 +42,7 @@ class DetalhesActivity: AppCompatActivity() {
     private fun setupView(){
 //        nomeDetalhes.text = ong?.organizacao?.nome
         title = ong?.nome
-        dataDetalhes.text = SimpleDateFormat("dd/MM/yyyy").format(ong?.dataProjeto)
+        dataDetalhes.text = (ong?.dataProjeto)
 //        estadoDetalhes.text = ong?.estado
 //        cidadeDetalhes.text = ong?.cidade
 //        bairroDetalhes.text = ong?.bairro
