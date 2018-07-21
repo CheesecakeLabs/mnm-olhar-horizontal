@@ -15,6 +15,9 @@ import br.com.maonamassa.olharhorizontal.utils.ProjetosApi
 import br.com.maonamassa.olharhorizontal.utils.RetrofitHelper
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_lista.*
+import android.support.design.widget.Snackbar
+import android.support.design.widget.FloatingActionButton
+import android.view.View
 
 
 class ListaActivity: AppCompatActivity(), OngClickListener {
@@ -24,6 +27,13 @@ class ListaActivity: AppCompatActivity(), OngClickListener {
         setContentView(R.layout.activity_lista)
         setupRecyclerView()
         getDataFromServer()
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show()
+            }
+        })
         title = "Olhar Horizontal"
     }
 
@@ -58,7 +68,7 @@ class ListaActivity: AppCompatActivity(), OngClickListener {
     }
 
     override fun onOngClicked(ong: ONG) {
-        val proximaTela = Intent(this, MapActivity::class.java)
+        val proximaTela = Intent(this, DetalhesActivity::class.java)
         proximaTela.putExtra("ong", ong)
         startActivity(proximaTela)
     }

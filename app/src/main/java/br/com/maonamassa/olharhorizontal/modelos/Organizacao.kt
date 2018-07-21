@@ -54,6 +54,10 @@ class Organizacao()  : PaperParcelable {
     @Expose
     var senha: String? = null
 
+    @SerializedName("url")
+    @Expose
+    var url: String? = null
+
 }
 
 
