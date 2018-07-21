@@ -48,12 +48,10 @@ class CadastroActivity : AppCompatActivity() {
 
     private fun concluirBotao() {
         if (senha.text.toString() != repetirSenha.text.toString()) {
-
             return
         }
 
         val usuario = Organizacao()
-
 
         usuario.nome = nomeCompleto?.text.toString()
         usuario.email = email?.text.toString()
@@ -61,9 +59,6 @@ class CadastroActivity : AppCompatActivity() {
         usuario.dataNasc = dataNascimento?.text.toString()
         usuario.cnpj = CNPJ?.text.toString()
         usuario.endereço = localizacao?.text.toString()
-
-
-
 
     }
 

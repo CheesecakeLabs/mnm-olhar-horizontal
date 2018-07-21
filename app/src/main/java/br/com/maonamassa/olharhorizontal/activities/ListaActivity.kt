@@ -9,10 +9,10 @@ import android.view.Menu
 import android.view.MenuItem
 import br.com.maonamassa.olharhorizontal.R
 import br.com.maonamassa.olharhorizontal.modelos.ONG
-import br.com.maonamassa.olharhorizontal.utils.OngAdapter
-import br.com.maonamassa.olharhorizontal.utils.OngClickListener
 import br.com.maonamassa.olharhorizontal.utils.ProjetosApi
 import br.com.maonamassa.olharhorizontal.utils.RetrofitHelper
+import br.com.maonamassa.olharhorizontal.utils.adapters.OngAdapter
+import br.com.maonamassa.olharhorizontal.utils.adapters.OngClickListener
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_lista.*
 
