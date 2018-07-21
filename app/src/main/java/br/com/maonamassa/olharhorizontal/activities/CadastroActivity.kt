@@ -1,6 +1,8 @@
 package br.com.maonamassa.olharhorizontal.activities
 
 import android.os.Bundle
+import android.os.Message
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
@@ -74,6 +76,7 @@ class CadastroActivity : AppCompatActivity() {
                     Log.d("teste", respostaCadastro.token)
                 }, { error ->
                     Log.d("Erro", error.message )
+                    showMessageDialog("Erro", "Erro ao efetuar o cadastro")
                 })
 
     }
@@ -105,8 +108,10 @@ class CadastroActivity : AppCompatActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ organizacao ->
                     Log.d("teste", organizacao.email)
+                    showMessageDialog("Sucesso!", "Cadastro efetuado")
                 }, { error ->
                     Log.d("Erro", error.message )
+                    showMessageDialog("Erro", "Erro ao efetuar o cadastro")
                 })
 
 
@@ -133,5 +138,16 @@ class CadastroActivity : AppCompatActivity() {
         val outputFormat = SimpleDateFormat("yyyy-mm-dd")
         val date = inputFormat.parse(date)
         return outputFormat.format(date)
+    }
+
+    private fun showMessageDialog(title: String, message: String){
+        var builder = AlertDialog.Builder(this)
+        builder.setNeutralButton("OK", { _, _ ->
+
+        })
+        builder.setTitle(title)
+        builder.setMessage(message)
+        val dialog = builder.create()
+        dialog?.show()
     }
 }
