@@ -58,7 +58,6 @@ class CadastroActivity : AppCompatActivity() {
 
     private fun concluirBotao() {
         if (senha.text.toString() != repetirSenha.text.toString()) {
-
             return
         }
 
@@ -120,10 +119,7 @@ class CadastroActivity : AppCompatActivity() {
     private fun salvarToken (token: String) {
 
         SessionHelper.salvarToken(token)
-
     }
-
-
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
