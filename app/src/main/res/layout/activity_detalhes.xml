@@ -4,6 +4,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.DetalhesActivity">
@@ -137,14 +138,28 @@
                         android:layout_height="1dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_below="@+id/nomeDetalhes"
+                        android:layout_below="@id/nomeDetalhes"
                         android:layout_marginTop="24dp"/>
+
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/mapa"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_margin="24dp"
+                        map:uiScrollGestures = "true"
+                        map:uiZoomGestures = "true"
+                        map:uiZoomControls = "true"
+                        map:uiRotateGestures = "true"
+                        android:layout_below="@id/linha1"
+                        map:uiTiltGestures = "true"
+
+                        />
 
                     <TextView
                         android:id="@+id/tituloEndereco"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/linha1"
+                        android:layout_below="@+id/mapa"
                         android:text="Endereço"
                         android:textSize="15sp"
                         android:layout_marginTop="24dp"
@@ -164,80 +179,6 @@
                         android:textStyle="bold"
                         />
 
-                    <TextView
-                        android:id="@+id/tituloBairro"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/enderecoDetalhes"
-                        android:text="Bairro"
-                        android:textSize="15sp"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginRight="198dp"
-                        android:layout_marginLeft="16dp"
-                        />
-
-                    <TextView
-                        android:id="@+id/bairroDetalhes"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tituloBairro"
-                        android:text="Bairro do projeto"
-                        android:textSize="16sp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:textStyle="bold"
-                        />
-
-                    <TextView
-                        android:id="@+id/tituloCidade"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/bairroDetalhes"
-                        android:text="Cidade"
-                        android:textSize="15sp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="16dp"
-                        />
-
-                    <TextView
-                        android:id="@+id/cidadeDetalhes"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tituloCidade"
-                        android:text="Cidade do Projeto"
-                        android:textSize="16sp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:textStyle="bold"
-                        />
-
-                    <TextView
-                        android:id="@+id/tituloEstado"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/cidadeDetalhes"
-                        android:text="Estado"
-                        android:textSize="15sp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginLeft="16dp"
-                        />
-
-                    <TextView
-                        android:id="@+id/estadoDetalhes"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@+id/tituloEstado"
-                        android:text="Estado do projeto"
-                        android:textSize="16sp"
-                        android:layout_marginTop="2dp"
-                        android:textStyle="bold"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginLeft="16dp"
-                        />
-
                     <View
                         android:id="@+id/linha2"
                         android:background="@color/corDoApp"
@@ -245,7 +186,7 @@
                         android:layout_height="1dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        android:layout_below="@+id/estadoDetalhes"
+                        android:layout_below="@+id/enderecoDetalhes"
                         android:layout_marginTop="24dp"/>
 
                     <TextView

@@ -13,8 +13,8 @@
         android:supportsRtl="true">
       
         <activity 
-            android:name=".activities.LoginActivity"
-            android:theme="@style/AppThemeNoBar">
+            android:name=".activities.ListaActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
               
@@ -28,7 +28,7 @@
         </activity>
 
         <activity
-            android:name=".activities.ListaActivity"
+            android:name=".activities.LoginActivity"
             android:theme="@style/AppTheme">
         </activity>
           
