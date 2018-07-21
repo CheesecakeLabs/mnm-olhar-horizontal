@@ -22,6 +22,8 @@ import android.graphics.Bitmap
 import android.location.Geocoder
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MotionEvent
+import android.view.View
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -56,7 +58,7 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.O
     }
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        val geoCoder= Geocoder(this, Locale.getDefault())
+        val geoCoder = Geocoder(this, Locale.getDefault())
         val adrresses = geoCoder.getFromLocationName(enderecoEd.text.toString(), 1)
         if (adrresses.isEmpty()) {
             return
@@ -64,10 +66,10 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.O
         val adrress = adrresses.first()
         val lat = adrress.latitude
         val lon = adrress.longitude
-        val coord=LatLng(lat, lon)
-        val marker= MarkerOptions().position(coord)
-        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(coord,15f))
-
+        val coord = LatLng(lat, lon)
+        val marker = MarkerOptions().position(coord)
+        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(coord, 17f))
+        map?.addMarker(marker)
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
@@ -93,6 +95,7 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.O
         super.onPause()
         mapa.onPause()
     }
+
     override fun onResume() {
         super.onResume()
         mapa.onResume()
@@ -114,7 +117,7 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.O
     }
 
 
-    val CAMERA_PIC_REQUEST= 1
+    val CAMERA_PIC_REQUEST = 1
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         if (requestCode == CAMERA_PIC_REQUEST) {
@@ -124,7 +127,7 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.O
         }
     }
 
-    fun openCamera (){
+    fun openCamera() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
@@ -172,8 +175,8 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.O
             val name = nameEditText.text.toString()
             ong.nome = name
 
-            val date=dataInput.text.toString()
-            ong.dataProjeto= date
+            val date = dataInput.text.toString()
+            ong.dataProjeto = date
 
             val descricption = descricaoEdit.text.toString()
             ong.descricao = descricption
