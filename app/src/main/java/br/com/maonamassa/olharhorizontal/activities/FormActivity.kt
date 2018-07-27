@@ -22,6 +22,7 @@ import android.graphics.Bitmap
 import android.location.Geocoder
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -43,8 +44,14 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.O
         setContentView(R.layout.activity_form)
         setupView()
         mapa.onCreate(savedInstanceState)
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mapa.getMapAsync(this)
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        finish()
+        return true
     }
 
     var map: GoogleMap? = null

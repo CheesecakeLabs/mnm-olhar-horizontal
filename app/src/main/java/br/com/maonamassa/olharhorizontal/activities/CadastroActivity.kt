@@ -78,12 +78,12 @@ class CadastroActivity : AppCompatActivity() {
                     showMessageDialog("Erro", "Erro ao efetuar o cadastro")
                 })
 
-        usuario.nome = nomeCompleto?.text.toString()
+//        usuario.nome = nomeCompleto?.text.toString()
         usuario.email = email?.text.toString()
         usuario.senha = senha?.text.toString()
-        usuario.dataNasc = dataNascimento?.text.toString()
-        usuario.cnpj = CNPJ?.text.toString()
-        usuario.endereco = localizacao?.text.toString()
+//        usuario.dataNasc = dataNascimento?.text.toString()
+//        usuario.cnpj = CNPJ?.text.toString()
+//        usuario.endereco = localizacao?.text.toString()
     }
 
     private fun processarResposta (respostaCadastro: RespostaCadastro) {
@@ -104,7 +104,7 @@ class CadastroActivity : AppCompatActivity() {
         organizacao.cnpj = CNPJ?.text.toString()
         organizacao.nome = nomeCompleto?.text.toString()
         organizacao.dataNasc =  convertDateToBackendFormat(dataNascimento?.text.toString())
-        organizacao.endereço = localizacao?.text.toString()
+//        organizacao.endereço = localizacao?.text.toString()
         organizacao.id = id
         val retrofit = RetrofitHelper.getRetrofit(true)
         val cadastroApi = retrofit.create(CadastroApi::class.java)

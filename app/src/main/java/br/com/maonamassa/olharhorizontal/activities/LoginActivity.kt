@@ -16,5 +16,10 @@ class LoginActivity: AppCompatActivity() {
             val intent = Intent(this, CadastroActivity::class.java)
             startActivity(intent)
         }
+
+        withoutLogin.setOnClickListener {
+            val intent = Intent(this, ListaActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

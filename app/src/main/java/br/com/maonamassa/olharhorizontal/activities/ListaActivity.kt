@@ -28,12 +28,10 @@ class ListaActivity: AppCompatActivity(), OngClickListener {
         setupRecyclerView()
         getDataFromServer()
         val fab = findViewById<FloatingActionButton>(R.id.fab)
-        fab.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View) {
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show()
-            }
-        })
+        fab.setOnClickListener {
+            val intent = Intent(this@ListaActivity, FormActivity::class.java)
+            startActivity(intent)
+        }
         title = "Olhar Horizontal"
     }
 

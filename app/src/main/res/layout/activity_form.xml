@@ -126,7 +126,7 @@
                 android:id="@+id/sendButton"
                 android:layout_width="364dp"
                 android:layout_height="68dp"
-                android:text="botão" />
+                android:text="Cadastrar" />
         </LinearLayout>
 
     </ScrollView>

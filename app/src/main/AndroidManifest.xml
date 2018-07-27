@@ -20,16 +20,19 @@
 
         <activity
             android:name=".activities.LoginActivity"
-            android:theme="@style/AppThemeNoBar"></activity>
+            android:theme="@style/AppThemeNoBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
 
         <activity
             android:name=".activities.ListaActivity"
             android:theme="@style/AppTheme">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <activity
@@ -38,15 +41,12 @@
 
         <activity
             android:name=".activities.BuscaActivity"
-            android:theme="@style/AppThemeNoBar"></activity>
+            android:theme="@style/AppTheme"></activity>
 
         <activity
             android:name=".activities.CadastroActivity"
             android:theme="@style/AppTheme"></activity>
 
-        <activity
-            android:name=".activities.MapActivity"
-            android:theme="@style/AppThemeNoBar"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
