@@ -13,11 +13,6 @@
         android:supportsRtl="true">
 
         <activity
-            android:name=".activities.ListaActivity"
-            android:theme="@style/AppTheme">
-        </activity>
-
-        <activity
             android:name=".activities.FormActivity"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/AppTheme">
