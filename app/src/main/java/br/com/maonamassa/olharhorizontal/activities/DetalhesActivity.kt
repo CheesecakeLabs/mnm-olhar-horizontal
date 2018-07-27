@@ -86,8 +86,10 @@ class DetalhesActivity: AppCompatActivity(), OnMapReadyCallback {
         nomeDetalhes.text = ong?.organizacao?.nome
         title = ong?.nome
 
+
         val date = SimpleDateFormat("yyyy-MM-dd").parse(ong?.dataProjeto)
         dataDetalhes.text = SimpleDateFormat("dd/MM/yyyy").format(date).toString()
+
 
         enderecoDetalhes.text = ong?.endereco
         descricaoDetalhes.text = ong?.descricao
