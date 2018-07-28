@@ -243,8 +243,10 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.O
         val apiInterface = retrofit.create(ProjetosApi::class.java)
         apiInterface?.createProject(ong)?.subscribeOn(Schedulers.io())?.subscribe({
             Log.e("sucesso!!", "Objeto enviado com sucesso")
+            finish()
         }, { error ->
             Log.e("Erro", "Deu ruim na API")
+            finish()
         }
         )
     }
