@@ -17,9 +17,17 @@ class LoginActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
+        loginButton.setOnClickListener {
+            val intent = Intent(this, ListaActivity::class.java)
+            startActivity(intent)
+        }
+
         withoutLogin.setOnClickListener {
             val intent = Intent(this, ListaActivity::class.java)
             startActivity(intent)
         }
     }
+
+
+
 }

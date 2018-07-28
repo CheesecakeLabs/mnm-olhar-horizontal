@@ -1,5 +1,6 @@
 package br.com.maonamassa.olharhorizontal.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Message
 import android.support.v7.app.AlertDialog
@@ -74,7 +75,7 @@ class CadastroActivity : AppCompatActivity() {
                     processarResposta(respostaCadastro)
                     Log.d("teste", respostaCadastro.token)
                 }, { error ->
-                    Log.d("Erro", error.message )
+                    Log.e("Erro", error.message )
                     showMessageDialog("Erro", "Erro ao efetuar o cadastro")
                 })
 
@@ -114,8 +115,10 @@ class CadastroActivity : AppCompatActivity() {
                 .subscribe({ organizacao ->
                     Log.d("teste", organizacao.email)
                     showMessageDialog("Sucesso!", "Cadastro efetuado")
+                    val intent = Intent(this, ListaActivity::class.java)
+                    startActivity(intent)
                 }, { error ->
-                    Log.d("Erro", error.message )
+                    Log.e("Erro", error.message )
                     showMessageDialog("Erro", "Erro ao efetuar o cadastro")
                 })
 
