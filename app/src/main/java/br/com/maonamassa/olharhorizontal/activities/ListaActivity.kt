@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_lista.*
 import android.support.design.widget.Snackbar
 import android.support.design.widget.FloatingActionButton
 import android.view.View
+import br.com.maonamassa.olharhorizontal.utils.SessionHelper
 
 
 class ListaActivity: AppCompatActivity(), OngClickListener {
@@ -31,6 +32,13 @@ class ListaActivity: AppCompatActivity(), OngClickListener {
         fab.setOnClickListener {
             val intent = Intent(this@ListaActivity, FormActivity::class.java)
             startActivity(intent)
+        }
+        val isAutenticated=SessionHelper.recuperarToken()!=null
+        if (isAutenticated){
+            fab.visibility=View.VISIBLE
+        }
+        else {
+            fab.visibility=View.INVISIBLE
         }
         title = "Olhar Horizontal"
     }

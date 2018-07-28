@@ -124,7 +124,10 @@
 
             <Button
                 android:id="@+id/sendButton"
-                android:layout_width="364dp"
+                android:backgroundTint="@color/colorAccent"
+                android:textColor="@color/branco"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
                 android:layout_height="68dp"
                 android:text="Cadastrar" />
         </LinearLayout>

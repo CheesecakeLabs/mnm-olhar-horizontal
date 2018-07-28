@@ -32,6 +32,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import io.reactivex.android.plugins.RxAndroidPlugins
 import kotlinx.android.synthetic.main.activity_form.mapa
+import java.io.IOException
+import java.text.SimpleDateFormat
 
 
 /**
@@ -65,22 +67,27 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.O
     }
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        val geoCoder = Geocoder(this, Locale.getDefault())
-        val adrresses = geoCoder.getFromLocationName(enderecoEd.text.toString(), 1)
-        if (adrresses.isEmpty()) {
-            return
+        try {
+            val geoCoder = Geocoder(this, Locale.getDefault())
+            val adrresses = geoCoder.getFromLocationName(enderecoEd.text.toString(), 1)
+            if (adrresses.isEmpty()) {
+                return
+            }
+            val adrress = adrresses.first()
+            val lat = adrress.latitude
+            val lon = adrress.longitude
+            val coord = LatLng(lat, lon)
+            val marker = MarkerOptions().position(coord)
+            map?.moveCamera(CameraUpdateFactory.newLatLngZoom(coord, 17f))
+            map?.addMarker(marker)
+        } catch (e: IOException) {
+            //Hanlde error
         }
-        val adrress = adrresses.first()
-        val lat = adrress.latitude
-        val lon = adrress.longitude
-        val coord = LatLng(lat, lon)
-        val marker = MarkerOptions().position(coord)
-        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(coord, 17f))
-        map?.addMarker(marker)
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
         map = googleMap
+        map?.uiSettings?.isScrollGesturesEnabled = false
 
 //        val florianopolis = LatLng( 25.00, 32.00)
 //        map?.setMinZoomPreference(12f)
@@ -223,7 +230,13 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.O
             val dpd = TimePickerDialog.newInstance(object : TimePickerDialog.OnTimeSetListener {
                 override fun onTimeSet(dialog: TimePickerDialog?, hora: Int, minuto: Int, segundo: Int) {
                     var textH = "$hora:$minuto"
-                    textHour.setText(textH, TextView.BufferType.EDITABLE)
+                    val format = SimpleDateFormat("HH:mm")
+                    val calendar = Calendar.getInstance()
+                    calendar.set(Calendar.HOUR, hora)
+                    calendar.set(Calendar.MINUTE, minuto)
+                    val date = Date(calendar.timeInMillis)
+
+                    textHour.setText(format.format(date), TextView.BufferType.EDITABLE)
                     //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
 
