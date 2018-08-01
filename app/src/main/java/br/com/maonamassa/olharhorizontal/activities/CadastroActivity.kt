@@ -140,10 +140,10 @@ class CadastroActivity: AppCompatActivity() {
         return outputFormat.format(date)
     }
 
-    private fun showMessageDialog(title: String, message: String) {
+    private fun showMessageDialog(title: String, message: String, action: (() -> Unit)? = null) {
         var builder = AlertDialog.Builder(this)
         builder.setNeutralButton("OK", { _, _ ->
-
+            action?.invoke()
         })
         builder.setTitle(title)
         builder.setMessage(message)
