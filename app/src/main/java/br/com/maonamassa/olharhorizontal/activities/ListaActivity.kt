@@ -35,6 +35,11 @@ class ListaActivity: AppCompatActivity(), OngClickListener {
         title = "Olhar Horizontal"
     }
 
+    override fun onResume() {
+        super.onResume()
+        getDataFromServer()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_busca, menu)
         return true

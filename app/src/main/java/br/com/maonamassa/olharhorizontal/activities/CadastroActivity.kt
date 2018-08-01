@@ -1,5 +1,6 @@
 package br.com.maonamassa.olharhorizontal.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Message
 import android.support.v7.app.AlertDialog
@@ -20,7 +21,7 @@ import java.text.SimpleDateFormat
 /**
  * Created by Aluno on 16/06/2018.
  */
-class CadastroActivity : AppCompatActivity() {
+class CadastroActivity: AppCompatActivity() {
     var participante = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +50,7 @@ class CadastroActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        botaoConcluir.setOnClickListener(){
+        botaoConcluir.setOnClickListener() {
 
             concluirBotao()
         }
@@ -68,15 +69,15 @@ class CadastroActivity : AppCompatActivity() {
         val retrofit = RetrofitHelper.getRetrofit(false)
         val cadastroApi = retrofit.create(CadastroApi::class.java)
         cadastroApi.cadastrar(usuario)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ respostaCadastro ->
-                    processarResposta(respostaCadastro)
-                    Log.d("teste", respostaCadastro.token)
-                }, { error ->
-                    Log.d("Erro", error.message )
-                    showMessageDialog("Erro", "Erro ao efetuar o cadastro")
-                })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ respostaCadastro ->
+                processarResposta(respostaCadastro)
+                Log.d("teste", respostaCadastro.token)
+            }, { error ->
+                Log.d("Erro", error.message)
+                showMessageDialog("Erro", "Erro ao efetuar o cadastro")
+            })
 
 //        usuario.nome = nomeCompleto?.text.toString()
         usuario.email = email?.text.toString()
@@ -86,66 +87,68 @@ class CadastroActivity : AppCompatActivity() {
 //        usuario.endereco = localizacao?.text.toString()
     }
 
-    private fun processarResposta (respostaCadastro: RespostaCadastro) {
+    private fun processarResposta(respostaCadastro: RespostaCadastro) {
         // REVER ISTO AQUI
         salvarToken(respostaCadastro.token ?: return)
         atualizarUsuario(respostaCadastro.organizacao?.id ?: return)
     }
 
-    private fun atualizarUsuario (id: Int) {
+    private fun atualizarUsuario(id: Int) {
 
         val organizacao = Organizacao()
         if (participante) {
             organizacao.entidade = "P"
-        }
-        else {
+        } else {
             organizacao.entidade = "O"
         }
         organizacao.cnpj = CNPJ?.text.toString()
         organizacao.nome = nomeCompleto?.text.toString()
-        organizacao.dataNasc =  convertDateToBackendFormat(dataNascimento?.text.toString())
+        organizacao.dataNasc = convertDateToBackendFormat(dataNascimento?.text.toString())
 //        organizacao.endereço = localizacao?.text.toString()
         organizacao.id = id
         val retrofit = RetrofitHelper.getRetrofit(true)
         val cadastroApi = retrofit.create(CadastroApi::class.java)
         cadastroApi.atualizarCadastro(id, organizacao)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ organizacao ->
-                    Log.d("teste", organizacao.email)
-                    showMessageDialog("Sucesso!", "Cadastro efetuado")
-                }, { error ->
-                    Log.d("Erro", error.message )
-                    showMessageDialog("Erro", "Erro ao efetuar o cadastro")
-                })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ organizacao ->
+                Log.d("teste", organizacao.email)
+                showMessageDialog("Sucesso!", "Cadastro efetuado") {
+                    startActivity(Intent(this, ListaActivity::class.java))
+                    finish()
+                }
+            }, { error ->
+                Log.d("Erro", error.message)
+                showMessageDialog("Erro", "Erro ao efetuar o cadastro")
+            })
 
 
     }
 
-    private fun salvarToken (token: String) {
+    private fun salvarToken(token: String) {
 
         SessionHelper.salvarToken(token)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
-        if (item?.itemId == android.R.id.home){
+        if (item?.itemId == android.R.id.home) {
             finish()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun convertDateToBackendFormat(date: String): String{
+    private fun convertDateToBackendFormat(date: String): String {
         val inputFormat = SimpleDateFormat("dd/mm/yyyy")
         val outputFormat = SimpleDateFormat("yyyy-mm-dd")
         val date = inputFormat.parse(date)
         return outputFormat.format(date)
     }
 
-    private fun showMessageDialog(title: String, message: String){
+    private fun showMessageDialog(title: String, message: String, action: (() -> Unit)? = null) {
         var builder = AlertDialog.Builder(this)
         builder.setNeutralButton("OK", { _, _ ->
-
+            action?.invoke()
         })
         builder.setTitle(title)
         builder.setMessage(message)

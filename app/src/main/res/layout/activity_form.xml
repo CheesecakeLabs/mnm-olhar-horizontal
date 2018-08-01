@@ -10,9 +10,9 @@
     <ImageButton
         android:id="@+id/sendImage"
         android:layout_width="match_parent"
-        android:visibility="gone"
         android:layout_height="100dp"
-        android:src="@android:drawable/ic_menu_camera" />
+        android:src="@android:drawable/ic_menu_camera"
+        android:visibility="gone" />
 
 
     <ScrollView
@@ -122,11 +122,16 @@
                 map:uiZoomControls="true"
                 map:uiZoomGestures="true" />
 
+
             <Button
                 android:id="@+id/sendButton"
-                android:layout_width="364dp"
-                android:layout_height="68dp"
-                android:text="Cadastrar" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/verde"
+                android:text="Cadastrar"
+                android:textAllCaps="false"
+                android:textColor="@color/branco" />
         </LinearLayout>
 
     </ScrollView>
