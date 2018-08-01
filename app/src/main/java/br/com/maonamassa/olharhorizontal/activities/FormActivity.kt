@@ -20,6 +20,7 @@ import java.util.*
 import android.content.Intent
 import android.graphics.Bitmap
 import android.location.Geocoder
+import android.support.v7.app.AlertDialog
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
@@ -30,16 +31,18 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import io.reactivex.Observable
+import io.reactivex.ObservableEmitter
 import io.reactivex.android.plugins.RxAndroidPlugins
 import kotlinx.android.synthetic.main.activity_form.mapa
-import java.io.IOException
 import java.text.SimpleDateFormat
+import java.util.concurrent.TimeUnit
 
 
 /**
  * Created by Aluno on 28/04/2018.
  */
-class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.OnDateSetListener, TextWatcher {
+class FormActivity: AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.OnDateSetListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,33 +60,6 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.O
     }
 
     var map: GoogleMap? = null
-
-    override fun afterTextChanged(s: Editable?) {
-
-    }
-
-    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-    }
-
-    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        try {
-            val geoCoder = Geocoder(this, Locale.getDefault())
-            val adrresses = geoCoder.getFromLocationName(enderecoEd.text.toString(), 1)
-            if (adrresses.isEmpty()) {
-                return
-            }
-            val adrress = adrresses.first()
-            val lat = adrress.latitude
-            val lon = adrress.longitude
-            val coord = LatLng(lat, lon)
-            val marker = MarkerOptions().position(coord)
-            map?.moveCamera(CameraUpdateFactory.newLatLngZoom(coord, 17f))
-            map?.addMarker(marker)
-        } catch (e: IOException) {
-            //Hanlde error
-        }
-    }
 
     override fun onMapReady(googleMap: GoogleMap?) {
         map = googleMap
@@ -156,18 +132,61 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.O
             Log.e("Camera", "comecando")
             val rxPermissions = RxPermissions(this)
             rxPermissions
-                    .request(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
-                    .subscribe { granted ->
-                        if (granted) {
-                            openCamera()
-                        } else {
-                            Log.e("Camera", "Deu errado")
-                        }
-
+                .request(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
+                .subscribe { granted ->
+                    if (granted) {
+                        openCamera()
+                    } else {
+                        Log.e("Camera", "Deu errado")
                     }
+
+                }
         }
 
-        enderecoEd.addTextChangedListener(this)
+        var subscriber: ObservableEmitter<String>? = null
+        Observable.create<String> {
+            subscriber = it
+        }.debounce(500, TimeUnit.MILLISECONDS)
+            .subscribe(
+                    {
+                        runOnUiThread {
+                            try {
+                                val geoCoder = Geocoder(this@FormActivity, Locale.getDefault())
+                                val adrresses = geoCoder.getFromLocationName(it, 1)
+                                if (!adrresses.isEmpty()) {
+                                    val adrress = adrresses.first()
+                                    val lat = adrress.latitude
+                                    val lon = adrress.longitude
+                                    val coord = LatLng(lat, lon)
+                                    val marker = MarkerOptions().position(coord)
+                                    map?.moveCamera(CameraUpdateFactory.newLatLngZoom(coord, 17f))
+                                    map?.addMarker(marker)
+                                }
+                            } catch (ex: Exception) {
+
+                            }
+
+                        }
+                    },
+                    {
+                        Log.e("erro", it.localizedMessage, it)
+                    }
+            )
+        enderecoEd.addTextChangedListener(object: TextWatcher {
+
+            override fun afterTextChanged(p0: Editable?) {
+                subscriber?.onNext(p0.toString())
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+
+
+
 
         dataInput.setOnClickListener {
             val now = Calendar.getInstance()
@@ -252,13 +271,28 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback, DatePickerDialog.O
     }
 
     fun createProject(ong: ONG) {
-        val retrofit = RetrofitHelper.getRetrofit(useAuth = false)
+        val retrofit = RetrofitHelper.getRetrofit(useAuth = true)
         val apiInterface = retrofit.create(ProjetosApi::class.java)
         apiInterface?.createProject(ong)?.subscribeOn(Schedulers.io())?.subscribe({
-            Log.e("sucesso!!", "Objeto enviado com sucesso")
+            runOnUiThread {
+                showMessageDialog("Sucesso!", "Organização criada com sucesso") {
+                    finish()
+                }
+            }
         }, { error ->
             Log.e("Erro", "Deu ruim na API")
         }
         )
+    }
+
+    private fun showMessageDialog(title: String, message: String, action: (() -> Unit)? = null) {
+        var builder = AlertDialog.Builder(this)
+        builder.setNeutralButton("OK", { _, _ ->
+            action?.invoke()
+        })
+        builder.setTitle(title)
+        builder.setMessage(message)
+        val dialog = builder.create()
+        dialog?.show()
     }
 }

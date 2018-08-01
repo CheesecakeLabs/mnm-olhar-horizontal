@@ -10,9 +10,9 @@
     <ImageButton
         android:id="@+id/sendImage"
         android:layout_width="match_parent"
-        android:visibility="gone"
         android:layout_height="100dp"
-        android:src="@android:drawable/ic_menu_camera" />
+        android:src="@android:drawable/ic_menu_camera"
+        android:visibility="gone" />
 
 
     <ScrollView
