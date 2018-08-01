@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#009688</color>
     <color name="colorPrimaryDark">#00796B</color>
-    <color name="colorAccent">#00146D</color>
+    <color name="colorAccent">#009688</color>
     <color name="fundoDaCelula">#f2f4f7</color>
     <color name="fundoDaImagem">#b1cef9</color>
     <color name="light_font">#FBFBFB</color>
