@@ -23,10 +23,6 @@ class LoginActivity: AppCompatActivity() {
         setContentView(R.layout.activity_login)
         SessionHelper.setup(this)
 
-        if (SessionHelper.recuperarToken() != null) {
-            openListActivity()
-        }
-
         botaoCadastrar.setOnClickListener {
             val intent = Intent(this, CadastroActivity::class.java)
             startActivity(intent)
@@ -54,6 +50,7 @@ class LoginActivity: AppCompatActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
+                    SessionHelper.salvarToken(it.token ?: "")
                     dialog?.hide()
                     openListActivity()
                 }, {
