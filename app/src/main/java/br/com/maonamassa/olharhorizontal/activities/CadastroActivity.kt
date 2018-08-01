@@ -2,7 +2,6 @@ package br.com.maonamassa.olharhorizontal.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Message
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -25,7 +24,6 @@ class CadastroActivity: AppCompatActivity() {
     var participante = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SessionHelper.setup(this)
         setContentView(R.layout.activity_cadastro)
         radiogroup.setOnCheckedChangeListener { group, checkedId ->
             if (checkedId == R.id.ONGbutton) {

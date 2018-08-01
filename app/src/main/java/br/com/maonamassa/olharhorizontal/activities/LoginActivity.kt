@@ -12,6 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
 import android.app.ProgressDialog
+import br.com.maonamassa.olharhorizontal.utils.SessionHelper
 
 
 class LoginActivity: AppCompatActivity() {
@@ -20,6 +21,11 @@ class LoginActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        SessionHelper.setup(this)
+
+        if (SessionHelper.recuperarToken() != null) {
+            openListActivity()
+        }
 
         botaoCadastrar.setOnClickListener {
             val intent = Intent(this, CadastroActivity::class.java)
