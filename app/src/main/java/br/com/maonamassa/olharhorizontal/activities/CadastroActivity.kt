@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat
 /**
  * Created by Aluno on 16/06/2018.
  */
-class CadastroActivity : AppCompatActivity() {
+class CadastroActivity: AppCompatActivity() {
     var participante = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +50,7 @@ class CadastroActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        botaoConcluir.setOnClickListener(){
+        botaoConcluir.setOnClickListener() {
 
             concluirBotao()
         }
@@ -75,36 +75,31 @@ class CadastroActivity : AppCompatActivity() {
                     processarResposta(respostaCadastro)
                     Log.d("teste", respostaCadastro.token)
                 }, { error ->
-                    Log.e("Erro", error.message )
+                    Log.e("Erro", error.message)
                     showMessageDialog("Erro", "Erro ao efetuar o cadastro")
                 })
 
-//        usuario.nome = nomeCompleto?.text.toString()
         usuario.email = email?.text.toString()
         usuario.senha = senha?.text.toString()
-//        usuario.dataNasc = dataNascimento?.text.toString()
-//        usuario.cnpj = CNPJ?.text.toString()
-//        usuario.endereco = localizacao?.text.toString()
     }
 
-    private fun processarResposta (respostaCadastro: RespostaCadastro) {
+    private fun processarResposta(respostaCadastro: RespostaCadastro) {
         // REVER ISTO AQUI
         salvarToken(respostaCadastro.token ?: return)
         atualizarUsuario(respostaCadastro.organizacao?.id ?: return)
     }
 
-    private fun atualizarUsuario (id: Int) {
+    private fun atualizarUsuario(id: Int) {
 
         val organizacao = Organizacao()
         if (participante) {
             organizacao.entidade = "P"
-        }
-        else {
+        } else {
             organizacao.entidade = "O"
         }
         organizacao.cnpj = CNPJ?.text.toString()
         organizacao.nome = nomeCompleto?.text.toString()
-        organizacao.dataNasc =  convertDateToBackendFormat(dataNascimento?.text.toString())
+        organizacao.dataNasc = convertDateToBackendFormat(dataNascimento?.text.toString())
 //        organizacao.endereço = localizacao?.text.toString()
         organizacao.id = id
         val retrofit = RetrofitHelper.getRetrofit(true)
@@ -118,34 +113,34 @@ class CadastroActivity : AppCompatActivity() {
                     val intent = Intent(this, ListaActivity::class.java)
                     startActivity(intent)
                 }, { error ->
-                    Log.e("Erro", error.message )
+                    Log.e("Erro", error.message)
                     showMessageDialog("Erro", "Erro ao efetuar o cadastro")
                 })
 
 
     }
 
-    private fun salvarToken (token: String) {
+    private fun salvarToken(token: String) {
 
         SessionHelper.salvarToken(token)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
-        if (item?.itemId == android.R.id.home){
+        if (item?.itemId == android.R.id.home) {
             finish()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun convertDateToBackendFormat(date: String): String{
+    private fun convertDateToBackendFormat(date: String): String {
         val inputFormat = SimpleDateFormat("dd/mm/yyyy")
         val outputFormat = SimpleDateFormat("yyyy-mm-dd")
         val date = inputFormat.parse(date)
         return outputFormat.format(date)
     }
 
-    private fun showMessageDialog(title: String, message: String){
+    private fun showMessageDialog(title: String, message: String) {
         var builder = AlertDialog.Builder(this)
         builder.setNeutralButton("OK", { _, _ ->
 

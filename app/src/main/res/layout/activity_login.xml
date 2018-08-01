@@ -1,127 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp">
 
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="44dp"
-        android:src="@mipmap/ic_launcher_round"
-        android:layout_centerHorizontal="true"
-        android:scaleType="centerCrop"
-        android:id="@+id/imagemONG"
-        />
+        <ImageView
+            android:id="@+id/imagemONG"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="44dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher_round"
+            />
 
-    <LinearLayout
-        android:id="@+id/inputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imagemONG"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp">
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_marginTop="32dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <EditText
+        <LinearLayout
+            android:id="@+id/inputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textPersonName" />
-        </android.support.design.widget.TextInputLayout>
+            android:layout_below="@id/imagemONG"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Senha"
-                android:inputType="textPersonName" />
+                android:layout_marginTop="32dp">
 
-        </android.support.design.widget.TextInputLayout>
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/emailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"/>
+            </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/inputLayout"
-        android:orientation="vertical"
-        >
+                <EditText
+                    android:id="@+id/passwordTextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Senha"
+                    android:inputType="textPassword"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:text="Esqueci minha senha"
-            android:layout_gravity="right"
-            android:gravity="center"
-            android:layout_marginBottom="5dp"
-            android:background="@color/transparente"
-            android:layout_marginTop="5dp"
-            android:textSize="14dp"
-            android:textColor="@color/grey_font"
-            android:textAllCaps="false"
-            android:layout_marginRight="3dp"
-            />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
 
 
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="Entrar"
-            android:textColor="@color/branco"
-            android:layout_marginTop="10dp"
-            android:textAllCaps="false"
-            android:backgroundTint="@color/verde"
-            android:id="@+id/loginButton"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:text="ou"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="14dp"
-            />
+            android:layout_below="@id/inputLayout"
+            android:orientation="vertical"
+            >
 
-        <Button
-            android:id="@+id/botaoCadastrar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cadastrar-se"
-            android:textAllCaps="false"
-            android:backgroundTint="@color/azul"
-            android:textColor="@color/branco"
-            />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="right"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/transparente"
+                android:gravity="center"
+                android:text="Esqueci minha senha"
+                android:textAllCaps="false"
+                android:textColor="@color/grey_font"
+                android:textSize="14dp"
+                />
 
-        <Button
-            android:id="@+id/withoutLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Entrar sem cadastro"
-            android:layout_gravity="center"
-            android:background="@color/transparente"
-            android:textSize="14dp"
-            android:textColor="@color/grey_font"
-            android:textAllCaps="false"
-            android:layout_marginTop="16dp"
-            />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/verde"
+                android:text="Entrar"
+                android:textAllCaps="false"
+                android:textColor="@color/branco"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dp"
+                android:text="ou"
+                android:textSize="14dp"
+                />
+
+            <Button
+                android:id="@+id/botaoCadastrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/azul"
+                android:text="Cadastrar-se"
+                android:textAllCaps="false"
+                android:textColor="@color/branco"
+                />
+
+            <Button
+                android:id="@+id/withoutLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:background="@color/transparente"
+                android:text="Entrar sem cadastro"
+                android:textAllCaps="false"
+                android:textColor="@color/grey_font"
+                android:textSize="14dp"
+                />
+
+        </LinearLayout>
     </RelativeLayout>
-
-
 
 
 </ScrollView>

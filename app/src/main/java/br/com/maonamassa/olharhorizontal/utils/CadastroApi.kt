@@ -1,10 +1,9 @@
 package br.com.maonamassa.olharhorizontal.utils
 
-import br.com.maonamassa.olharhorizontal.modelos.Cadastro
-import br.com.maonamassa.olharhorizontal.modelos.Organizacao
-import br.com.maonamassa.olharhorizontal.modelos.PaginaOng
-import br.com.maonamassa.olharhorizontal.modelos.RespostaCadastro
+import br.com.maonamassa.olharhorizontal.modelos.*
+import io.reactivex.Completable
 import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.http.*
 
 /**
@@ -13,9 +12,13 @@ import retrofit2.http.*
 interface CadastroApi {
 
     @POST("api/auth/register")
-    fun cadastrar (@Body cadastro: Cadastro): Observable<RespostaCadastro>
+    fun cadastrar(@Body cadastro: Cadastro): Observable<RespostaCadastro>
 
     @PATCH("api/users/{id}/")
-    fun atualizarCadastro (@Path("id") id: Int, @Body organizacao: Organizacao): Observable<Organizacao>
+    fun atualizarCadastro(@Path("id") id: Int, @Body organizacao: Organizacao): Observable<Organizacao>
+
+
+    @POST("api/auth/login")
+    fun login(@Body loginRequest: LoginRequest): Single<RespostaCadastro>
 
 }
