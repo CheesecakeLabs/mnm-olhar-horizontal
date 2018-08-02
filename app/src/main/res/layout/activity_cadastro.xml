@@ -53,7 +53,7 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:hint="Nome Completo"
-           android:inputType="textPersonName"
+           android:inputType="textPersonName|textCapWords"
            android:id="@+id/nomeCompleto"
            />
 
